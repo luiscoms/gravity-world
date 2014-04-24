@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="blocks-world1" tilewidth="32" tileheight="32">
+  <image source="../img/map/blocks-world1.png" width="640" height="160"/>
+ </tileset>
+ <tileset firstgid="101" name="blocks" tilewidth="32" tileheight="32" spacing="2" margin="2">
+  <tileoffset x="1" y="1"/>
+  <image source="../img/map/blocks.png" width="1000" height="140"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="217" name="metatiles32x32" tilewidth="32" tileheight="32">
+  <image source="../img/map/metatiles32x32.png" width="160" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer name="background" width="15" height="10">
+  <image source="../img/map/Background1.png"/>
+ </imagelayer>
+ <layer name="background" width="15" height="10">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAagAAAGoAAABqAAAAagAAAGoAAABqAAAAagAAAGoAAABqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAADAAAABAAAAAIAAAABAAAAAgAAAAMAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABYAAAAXAAAAGAAAAFEAAAAVAAAAFgAAABcAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKQAAACoAAAArAAAALAAAAFEAAAApAAAAKgAAACsAAAAsAAAAAAAAAAAAAAAAAAAA
+  </data>
+ </layer>
+ <objectgroup name="objects" width="15" height="10">
+  <object name="Rock" x="96" y="128" width="32" height="64">
+   <properties>
+    <property name="image" value="rock"/>
+    <property name="spriteheight" value="56"/>
+    <property name="spritewidth" value="48"/>
+   </properties>
+  </object>
+  <object name="Coin" x="192" y="192" width="32" height="32">
+   <properties>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="Up" x="256" y="160" width="32" height="32">
+   <properties>
+    <property name="image" value="up"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object name="Down" x="320" y="64" width="32" height="32">
+   <properties>
+    <property name="image" value="down"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="collision" width="15" height="10">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAANkAAADZAAAA2QAAANkAAADZAAAA2QAAANkAAADZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAANkAAADZAAAA2QAAANkAAADZAAAA2QAAANkAAADZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  </data>
+ </layer>
+</map>
