@@ -78,6 +78,7 @@
   </object>
   <object name="Coin" x="192" y="192" width="32" height="32">
    <properties>
+    <property name="image" value="coin"/>
     <property name="spritewidth" value="32"/>
    </properties>
   </object>

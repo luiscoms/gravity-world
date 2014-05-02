@@ -1,6 +1,14 @@
 
 /* Game namespace */
 var game = {
+    /**
+     * an object where to store game global data
+     */
+    data : {
+        score : 0,
+        coins : 0
+    },
+
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
@@ -14,7 +22,7 @@ var game = {
 			window.onReady(function () {
 				me.plugin.register.defer(debugPanel, "debug");
 			});
-			me.debug.renderHitBox = true;
+			//me.debug.renderHitBox = true;
 		}
 
         // Initialize the audio.
@@ -36,13 +44,13 @@ var game = {
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 
 		// set a global fading transition for the screen
-		me.state.transition("fade", "#FFFFFF", 250);
+		me.state.transition("fade", "#FF0000", 250);
 
 		// add our player entity in the entity pool
-		me.entityPool.add("Rock", game.PlayerEntity);
-		me.entityPool.add("Up", game.GravityEntity);
-		me.entityPool.add("Down", game.GravityEntity);
-		me.entityPool.add("Coin", game.CoinEntity);
+		me.pool.register("Rock", game.PlayerEntity);
+		me.pool.register("Up", game.GravityEntity);
+		me.pool.register("Down", game.GravityEntity);
+		me.pool.register("Coin", game.CoinEntity);
 
 		// enable the keyboard
 	//	me.input.bindKey(me.input.KEY.SPACE, "jump", true);
@@ -51,5 +59,6 @@ var game = {
 
 		// Start the game.
 		me.state.change(me.state.MENU);
+        console.log("Loaded");
 	}
 };

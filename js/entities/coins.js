@@ -1,5 +1,4 @@
-
-game.CoinsObject = me.HUD_Item.extend({
+game.CoinsObject = me.Renderable.extend({
 	init: function(x, y) {
 		// call the parent constructor
 		this.parent(x, y);

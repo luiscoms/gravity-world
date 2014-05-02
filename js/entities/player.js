@@ -7,14 +7,14 @@ game.PlayerEntity = me.ObjectEntity.extend({
 	------ */
 
 	init: function(x, y, settings) {
-		// call the constructor
-		this.parent(x, y, settings);
+        // call the constructor
+        this.parent(x, y, settings);
 
-		// set the default horizontal & vertical speed (accel vector)
-		this.setVelocity(3, 15);
+        // set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(3, 15);
 
-		// set the display to follow our position on both axis
-		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        // set the display to follow our position on both axis
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
 		this.gravity = 0.98;	// default value: 0.98 (earth gravity)
 
@@ -82,7 +82,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
 		updated = this.updateMovement();
 
 		// check for collision
-		var res = me.game.collide(this);
+        var res = me.game.world.collide(this);
 
 		if (res) {
 			if (res.obj.name == 'up' || res.obj.name == 'down') {
@@ -116,8 +116,6 @@ game.PlayerEntity = me.ObjectEntity.extend({
 		if (updated || this.vel.x!==0 || this.vel.y!==0) {
 			// update object animation
 			this.parent(this);
-
-
 
 			return true;
 		}

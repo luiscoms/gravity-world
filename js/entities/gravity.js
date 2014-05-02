@@ -20,12 +20,11 @@ game.GravityEntity = me.CollectableEntity.extend({
 		// make sure it cannot be collected "again"
 		this.collidable = false;
 		// remove it
-		me.game.remove(this);
+		me.game.world.removeChild(this);
 	},
 
 	update: function() {
 		//this.updateMovement();
 		//return true;
 	}
-
 });
