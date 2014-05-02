@@ -1,11 +1,11 @@
-; EditorConfig file format for defining coding styles 
-; enabling editors to adhere to the project defined style. 
+; EditorConfig file format for defining coding styles
+; enabling editors to adhere to the project defined style.
 ; Visit http://EditorConfig.org for more details.
 
 root = true
 
-; All JavaScript files should use spaces unless specified otherwise
-[**.js]
+; All files should use spaces unless specified otherwise
+[*]
 indent_style = space
 indent_size = 4
 end_of_line = lf
