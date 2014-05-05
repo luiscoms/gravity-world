@@ -1,30 +1,42 @@
-/*----------------
- a Up entity
------------------------- */
 game.GravityEntity = me.CollectableEntity.extend({
-	// extending the init function is not mandatory
-	// unless you need to add some extra initialization
-	init: function(x, y, settings) {
-		// call the parent constructor
-		this.parent(x, y, settings);
-		//console.log('g', me.sys);
+    // extending the init function is not mandatory
+    // unless you need to add some extra initialization
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this.parent(x, y, settings);
 
-		//me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-	},
+        this.gravity = me.sys.gravity;
+    },
 
-	// this function is called by the engine, when
-	// an object is touched by something (here collected)
-	onCollision: function() {
-		// do something when collected
+    // call by the engine when colliding with another object
+    // obj parameter corresponds to the other object (typically the player) touching this one
+    onCollision: function(res, obj) {
+        // make sure it cannot be collected "again"
+        this.collidable = false;
+        // remove it
+        me.game.world.removeChild(this);
 
-		// make sure it cannot be collected "again"
-		this.collidable = false;
-		// remove it
-		me.game.world.removeChild(this);
-	},
+        switch (this.name) {
+        // changing gravity
+        case 'up':
+            if (me.sys.gravity > 0 && obj.vel.y === 0) {
+                me.sys.gravity *= -1;
+                obj.flipY(true);
+            }
+            break;
+        case 'down':
+            if (me.sys.gravity < 0 && obj.vel.y === 0) {
+                obj.flipY(false);
+                me.sys.gravity *= -1;
+            }
+            break;
 
-	update: function() {
-		//this.updateMovement();
-		//return true;
-	}
+        }
+    },
+
+    update: function() {
+        this.gravity = me.sys.gravity;
+        this.updateMovement();
+        return true;
+    }
 });

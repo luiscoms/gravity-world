@@ -1,14 +1,10 @@
-/*-------------------
-a player entity
--------------------------------- */
-game.PlayerEntity = me.ObjectEntity.extend({
-	/* -----
-	constructor
-	------ */
+game.Player = me.ObjectEntity.extend({
 
-	init: function(x, y, settings) {
+    init: function(x, y, settings) {
         // call the constructor
         this.parent(x, y, settings);
+
+        this.name = "Rock";
 
         // set the default horizontal & vertical speed (accel vector)
         this.setVelocity(3, 15);
@@ -16,112 +12,76 @@ game.PlayerEntity = me.ObjectEntity.extend({
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
-		this.gravity = 0.98;	// default value: 0.98 (earth gravity)
+        this.renderable.addAnimation("rock_stand", [0]);
+        this.renderable.addAnimation("rock_walk", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        this.renderable.setCurrentAnimation("rock_stand");
+    },
 
-		// sets animation orientation
-		gravity = 'bottom';
+    walkLeft: function() {
+        if (!this.renderable.isCurrentAnimation("rock_walk")) {
+            this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
+        }
+        // flip the sprite on horizontal axis
+        this.flipX(false);
+        // update the entity velocity
+        this.vel.x -= this.accel.x * me.timer.tick;
+    },
 
-		// stores init values so it can be reset on death
-		this.initX = x;
-		this.initY = y - 2;	// -2 because player is 42 px tall
-		this.initGravity = this.gravity;
+    walkRight: function() {
+        if (!this.renderable.isCurrentAnimation("rock_walk")) {
+            this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
+        }
+        // unflip the sprite
+        this.flipX(true);
+        // update the entity velocity
+        this.vel.x += this.accel.x * me.timer.tick;
+    },
 
-		// player animations
-		this.alwaysUpdate = true;
-		this.renderable.addAnimation("rock_walk", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
-		this.renderable.addAnimation("rock_stand", [0]);
-		this.renderable.setCurrentAnimation("rock_stand");
-		this.flipX(true);
+    stop: function() {
+        this.renderable.setCurrentAnimation("rock_stand");
+        this.vel.x = 0;
+    },
 
-		// snowstorm ticker
-		lastTicked = me.timer.getTime();
-	},
+    update: function(dt) {
+        // set gravity from the global value
+        this.gravity = me.sys.gravity;
 
-	onDestroyEvent: function() {
+        if (me.input.isKeyPressed('left')) {
+            this.walkLeft();
+        } else if (me.input.isKeyPressed('right')) {
+            this.walkRight();
+        } else {
+            //this.stop();
+        }
 
-		console.log('onDestroyEvent');
+        // check & update player movement
+        var updated = this.updateMovement();
 
-	},
+        // check if we fell into a hole
+        if (!this.inViewport ||
+                (this.gravity > 0 && this.pos.y > me.video.getHeight()) ||
+                (this.gravity < 0 && this.pos.y < -this.getBounds().height)) {
 
+            // if yes reset the game
+            //me.game.world.removeChild(this);
 
-	/* -----
-	update the player pos
-	------ */
-	update: function() {
-		//console.log(this.inViewport);
-		if (!this.inViewport) {
-			this.alive = false;
-			return false;
-		}
-		if (me.input.isKeyPressed('left'))
-		{
-			this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
+            me.state.change(me.state.MENU);//me.levelDirector.reloadLevel();
+            return true;
+        }
 
-			// flip the sprite axis on left movement
-			this.flipX(false);
+        // check for collision
+        me.game.world.collide(this);
 
-			// update the player velocity
-			this.vel.x -= this.accel.x * me.timer.tick;
+        // update animation if necessary
+        if (this.vel.x !== 0 || this.vel.y !== 0) {
+            // update object animation
+            this.parent(dt);
+            return true;
+        }
 
-			//me.audio.play("walk");
-		}
-		else if (me.input.isKeyPressed('right'))
-		{
-			this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
-			this.flipX(true);
-			this.vel.x += this.accel.x * me.timer.tick;
-			//me.audio.play("walk");
-		}
-		else
-		{
-			this.renderable.setCurrentAnimation("rock_stand");
-			this.vel.x = 0;
-		}
+        // else inform the engine we did not perform
+        // any update (e.g. position, animation)
+        return updated || false;
+    }
 
-		// check & update player movement
-		updated = this.updateMovement();
-
-		// check for collision
-        var res = me.game.world.collide(this);
-
-		if (res) {
-			if (res.obj.name == 'up' || res.obj.name == 'down') {
-				switch (gravity) {
-					// changing gravity
-					case 'bottom':
-						if (res.obj.name == 'up' && this.vel.y === 0) {
-							this.gravity *= -1;
-							//this.renderable.setCurrentAnimation("rock_stand");
-							// flip sprite on y-axis
-							this.flipY(true);
-							gravity = 'top';
-							//me.audio.play("gravity");
-						}
-						break;
-					case 'top':
-						if (res.obj.name == 'down' && this.vel.y === 0) {
-							this.gravity *= -1;
-							//this.renderable.setCurrentAnimation("rock_stand");
-							this.flipY(false);
-							gravity = 'bottom';
-							//me.audio.play("gravity");
-						}
-						break;
-				}
-			}
-			// if we collide with an enemy
-		}
-
-		// update animation if necessary
-		if (updated || this.vel.x!==0 || this.vel.y!==0) {
-			// update object animation
-			this.parent(this);
-
-			return true;
-		}
-
-		// else inform the engine we did not perform
-		// any update (e.g. position, animation)
-		return updated || false;
-	}
 });

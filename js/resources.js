@@ -1,41 +1,18 @@
 game.resources = [
+    {name: "title",  type:"image", src: "data/img/gui/title.png"},
+    {name: "background01-960x640",  type:"image", src: "data/img/backgrounds/background01-960x640.png"},
+    {name: "foreground01-960x640",  type:"image", src: "data/img/backgrounds/foreground01-960x640.png"},
 
-	/* Graphics.
-	 * @example
-	 * {name: "example", type:"image", src: "data/img/example.png"},
-	 */
-	{name: "title_screen",       type:"image", src: "data/img/gui/title_screen.png"},
+    {name: "player-96x102",  type:"image", src: "data/img/player/player-96x102.png"},
+    {name: "sand-tiles-64x64",  type:"image", src: "data/img/map/sand-tiles-64x64.png"},
+    {name: "metatiles-64x64",  type:"image", src: "data/img/map/metatiles-64x64.png"},
 
-	{name: "Background1", type:"image", src: "data/img/map/Background1.png"},
-	{name: "blocks-world1", type:"image", src: "data/img/map/blocks-world1.png"},
-	{name: "blocks", type:"image", src: "data/img/map/blocks.png"},
-	{name: "metatiles32x32",  type:"image", src: "data/img/map/metatiles32x32.png"},
+    {name: "down-64x64",  type:"image", src: "data/img/blocks/down-64x64.png"},
+    {name: "up-64x64",  type:"image", src: "data/img/blocks/up-64x64.png"},
+    {name: "coin-64x64",  type:"image", src: "data/img/blocks/coin-64x64.png"},
 
-	{name: "rock", type:"image", src: "data/img/sprite/player.png"},
-	{name: "coin", type:"image", src: "data/img/sprite/coin.png"},
-	{name: "up", type:"image", src: "data/img/sprite/up.png"},
-	{name: "down", type:"image", src: "data/img/sprite/down.png"},
+    {name: "bback",  type:"image", src: "data/img/buttons/bback.png"},
+    {name: "bfront",  type:"image", src: "data/img/buttons/bfront.png"},
 
-	/* Atlases
-	 * @example
-	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
-	 */
-
-	/* Maps.
-	 * @example
-	 * {name: "example01", type: "tmx", src: "data/map/example01.tmx"},
-	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
-	 */
-	{name: "level1.1", type: "tmx", src: "data/map/level1.1.tmx"},
-	{name: "demo1", type: "tmx", src: "data/map/demo1.tmx"},
-
-	/* Background music.
-	 * @example
-	 * {name: "example_bgm", type: "audio", src: "data/bgm/", channel : 1},
-	 */
-
-	/* Sound effects.
-	 * @example
-	 * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
-	 */
+    {name: "demo", type: "tmx", src: "data/map/demo.tmx"}
 ];

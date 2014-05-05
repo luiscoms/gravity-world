@@ -1,18 +1,20 @@
 /**
  * Coin Entity
  */
-game.CoinEntity = me.CollectableEntity.extend({
-
-    init: function (x, y, settings) {
+game.Coin = me.CollectableEntity.extend({
+    // extending the init function is not mandatory
+    // unless you need to add some extra initialization
+    init: function(x, y, settings) {
         // call the parent constructor
-        this.parent(x, y , settings);
+        this.parent(x, y, settings);
     },
 
-    onCollision : function () {
-        // do something when collide
-        //me.audio.play("cling");
-        // give some coins
-        game.data.coins += 1;
+    // this function is called by the engine, when
+    // an object is touched by something (here collected)
+    onCollision: function() {
+        // give some score
+        game.data.score += 1;
+
         // make sure it cannot be collected "again"
         this.collidable = false;
         // remove it
