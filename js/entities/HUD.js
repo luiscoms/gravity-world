@@ -24,6 +24,83 @@ game.HUD.Container = me.ObjectContainer.extend({
 
         // add our child score object at the right-top position
         this.addChild(new game.HUD.ScoreItem(950, 5));
+
+        var HiddenButton = me.DraggableEntity.extend({
+            init: function (x, y, settings) {
+                // call the parent constructor
+                this.parent(x, y, settings);
+                // set the direction of button
+                this.direction = settings.direction;
+                this.walking = false;
+            },
+            update: function () {
+                if (this.walking) {
+                    console.log("vai")
+                    if (this.direction == "right") {
+                        game.Rock.walkRight();
+                    } else {
+                        game.Rock.walkLeft();
+                    }
+                }
+
+                return true;
+            },
+            draw: function (context) {
+                //context.fillRect(this.pos.x, this.pos.y, this.width, this.height);
+            },
+            dragStart: function (e) {
+                // call the parent function
+                this.parent(e);
+                this.walking = true;
+            },
+            dragEnd: function (e) {
+                // call the parent function
+                this.parent(e);
+                this.walking = false;
+                game.Rock.stop();
+            },
+            dragMove: function () {}
+        });
+
+        this.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "bt-84x72",
+                "subimage" : "bback",
+                "opacity" : 0.5,
+                x: 10,
+                y: 560//,
+                // "onClick" : function () {
+                //     me.state.change(me.state.PLAY);
+                //     return true;
+                // }
+            }),
+            2 // z-index
+        );
+
+        // Add a button
+        this.addChild(
+            new HiddenButton(10, 560, { width: 84, height: 72, "direction" : "left" })
+        );
+
+        this.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "bt-84x72",
+                "subimage" : "bfront",
+                "opacity" : 0.5,
+                x: 870,
+                y: 560//,
+                // "onClick" : function () {
+                //     me.state.change(me.state.PLAY);
+                //     return true;
+                // }
+            }),
+            2 // z-index
+        );
+
+        // Add a button
+        this.addChild(
+            new HiddenButton(870, 560, { width: 84, height: 72, "direction" : "right" })
+        );
     }
 });
 
@@ -69,5 +146,53 @@ game.HUD.ScoreItem = me.Renderable.extend({
      */
     draw : function (context) {
         this.font.draw(context, game.data.score, this.pos.x, this.pos.y);
+    }
+});
+
+game.HUD.GUI_Button = me.ObjectContainer.extend({
+    init: function (settings) {
+        console.log("GUI_Button init!");
+        // call the parent constructor
+        this.parent();
+
+        var x = settings.x || 0, y = settings.y || 0, z = 1;
+
+        if (settings.centerX) {
+            x = (960 / 2) - (me.loader.getImage(settings.image).width / 2);
+        }
+        if (settings.centerY) {
+            y = (640 / 2) - (me.loader.getImage(settings.image).height / 2);
+        }
+
+        var ImageButton = me.GUI_Object.extend({
+            init: function (x, y, settings) {
+                // call the parent constructor
+                this.parent(x, y, settings);
+
+                this.setOpacity(settings.opacity);
+            },
+            onClick : function() {
+                if (typeof settings.onClick === 'function') {
+                    settings.onClick();
+                }
+            }
+        });
+
+        // Add a button
+        this.addChild(
+            new ImageButton(x, y, { "image" : settings.image, "opacity" : settings.opacity }), z
+        );
+
+        if (settings.subimage) {
+            // centralize subimage
+            x += (me.loader.getImage(settings.image).width - me.loader.getImage(settings.subimage).width) / 2;
+            y += (me.loader.getImage(settings.image).height - me.loader.getImage(settings.subimage).height) / 2;
+            // Add a textimage
+            this.addChild(
+                new ImageButton(x, y, { "image" : settings.subimage, "opacity" : settings.opacity  }), z+1
+            );
+        }
+
+        return true;
     }
 });

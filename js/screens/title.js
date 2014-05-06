@@ -1,13 +1,13 @@
 /*global me: true, game: true */
 game.TitleScreen = me.ScreenObject.extend({
     onResetEvent: function() {
-        me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
-        me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
-        this.handler = me.event.subscribe(me.event.KEYDOWN, function (action) {
-            if (action === "enter") {
-                me.state.change(me.state.PLAY);
-            }
-        });
+        // me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
+        // me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
+        // this.handler = me.event.subscribe(me.event.KEYDOWN, function (action) {
+        //     if (action === "enter") {
+        //         me.state.change(me.state.PLAY);
+        //     }
+        // });
         // Load title background
         me.game.world.addChild(
             new me.ImageLayer("background01-960x640", 0, 0, "background01-960x640"),
@@ -22,9 +22,28 @@ game.TitleScreen = me.ScreenObject.extend({
 
         // Load title image
         me.game.world.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "title",
+                centerX: true,
+                y: 80
+            }),
             //new me.ImageLayer("title", 200, 0, "title"),
-            new me.SpriteObject((960 / 2) - (602 / 2), (640 / 2) - (306 / 2), me.loader.getImage("title")),
+            //new me.SpriteObject((960 / 2) - (602 / 2), (640 / 2) - (306 / 2), me.loader.getImage("title")),
             2 // z-index
+        );
+
+        me.game.world.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "bt01big",
+                "subimage" : "aplaytext",
+                centerX: true,
+                y: 440,
+                "onClick" : function () {
+                    me.state.change(me.state.PLAY);
+                    return true;
+                }
+            }),
+            3 // z-index
         );
     },
 
@@ -36,8 +55,8 @@ game.TitleScreen = me.ScreenObject.extend({
     },
 
     onDestroyEvent : function () {
-        me.input.unbindKey(me.input.KEY.ENTER);
-        me.input.unbindPointer(me.input.mouse.LEFT);
-        me.event.unsubscribe(this.handler);
+        // me.input.unbindKey(me.input.KEY.ENTER);
+        // me.input.unbindPointer(me.input.mouse.LEFT);
+        // me.event.unsubscribe(this.handler);
     }
 });
