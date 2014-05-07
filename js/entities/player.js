@@ -5,9 +5,10 @@ game.Player = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         this.name = "Rock";
+        this.walking = false;
 
         // set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(3, 15);
+        this.setVelocity(5, 15);
 
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -45,14 +46,6 @@ game.Player = me.ObjectEntity.extend({
     update: function(dt) {
         // set gravity from the global value
         this.gravity = me.sys.gravity;
-
-        if (me.input.isKeyPressed('left')) {
-            this.walkLeft();
-        } else if (me.input.isKeyPressed('right')) {
-            this.walkRight();
-        } else {
-            //this.stop();
-        }
 
         // check & update player movement
         var updated = this.updateMovement();

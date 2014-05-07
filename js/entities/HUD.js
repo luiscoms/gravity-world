@@ -31,16 +31,15 @@ game.HUD.Container = me.ObjectContainer.extend({
                 this.parent(x, y, settings);
                 // set the direction of button
                 this.direction = settings.direction;
-                this.walking = false;
             },
             update: function () {
-                if (this.walking) {
-                    console.log("vai")
-                    if (this.direction == "right") {
+                switch (game.Rock.walking) {
+                    case "right":
                         game.Rock.walkRight();
-                    } else {
+                        break;
+                    case "left":
                         game.Rock.walkLeft();
-                    }
+                        break;
                 }
 
                 return true;
@@ -51,12 +50,12 @@ game.HUD.Container = me.ObjectContainer.extend({
             dragStart: function (e) {
                 // call the parent function
                 this.parent(e);
-                this.walking = true;
+                game.Rock.walking = this.direction;
             },
             dragEnd: function (e) {
                 // call the parent function
                 this.parent(e);
-                this.walking = false;
+                game.Rock.walking = false;
                 game.Rock.stop();
             },
             dragMove: function () {}
@@ -101,9 +100,24 @@ game.HUD.Container = me.ObjectContainer.extend({
         this.addChild(
             new HiddenButton(870, 560, { width: 84, height: 72, "direction" : "right" })
         );
+
+        this.addChild(
+            new game.HUD.Joystick()
+        );
     }
 });
 
+game.HUD.Joystick = me.ObjectContainer.extend({
+    update : function() {
+        if (!game.Rock.walking && me.input.isKeyPressed('left')) {
+            game.Rock.walkLeft();
+        } else if (!game.Rock.walking && me.input.isKeyPressed('right')) {
+            game.Rock.walkRight();
+        } else if (!game.Rock.walking) {
+            game.Rock.stop();
+        }
+    }
+});
 
 /**
  * a basic HUD item to display score
