@@ -1,4 +1,17 @@
+@font-face {
+    font-family: 'Marker-Felt';
+    src:  url('fonts/Marker-Felt.ttf.woff') format('woff'),
+    url('fonts/Marker-Felt.ttf.svg#Marker-Felt') format('svg'),
+    url('fonts/Marker-Felt.ttf.eot'),
+    url('fonts/Marker-Felt.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
+    /* Add Font Family */
+    font-family: Marker-Felt, Arial, sans-serif;
+
     background-color: #000;
     color: #fff;
 
@@ -8,7 +21,7 @@ body {
     -o-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-	
+
 	/* disable touch panning/zooming */
 	-ms-touch-action: none;
 	touch-action: none;
@@ -22,7 +35,7 @@ body {
 
     /* Hide the gap for font descenders. */
     display: block;
-	
+
 	/* disable scaling interpolation */
 	image-rendering: optimizeSpeed;
 	image-rendering: -moz-crisp-edges;

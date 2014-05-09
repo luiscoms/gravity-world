@@ -133,7 +133,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
         this.parent(new me.Vector2d(x, y), 10, 10);
 
         // create a font
-        this.font = new me.Font("Arial", 20, "black", "right");
+        this.font = new me.Font("Marker-Felt, Arial, sans-serif", 20, "black", "right");
 
         // local copy of the global score
         this.score = -1;
