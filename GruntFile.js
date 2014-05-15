@@ -48,11 +48,19 @@ module.exports = function(grunt) {
         }
       }
     },
+    notify: {
+      buid: {
+        options: {
+          message: 'Buid completed'
+        }
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-processhtml');
-  grunt.registerTask('default', ['concat', 'uglify', 'copy', 'processhtml']);
+  grunt.loadNpmTasks('grunt-notify');
+  grunt.registerTask('default', ['concat', 'uglify', 'copy', 'processhtml', 'notify:buid']);
 }
