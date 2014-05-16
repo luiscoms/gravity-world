@@ -67,7 +67,7 @@
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
-  <object name="Down" x="832" y="512" width="64" height="64">
+  <object name="Down" x="704" y="128" width="64" height="64">
    <properties>
     <property name="image" value="down-64x64"/>
     <property name="spritewidth" value="64"/>
@@ -88,6 +88,17 @@
   <object name="Coin" x="576" y="448" width="64" height="64">
    <properties>
     <property name="image" value="coin-64x64"/>
+    <property name="spritewidth" value="64"/>
+   </properties>
+  </object>
+  <object name="Shell" x="192" y="128" width="64" height="64">
+   <properties>
+    <property name="image" value="shellA"/>
+   </properties>
+  </object>
+  <object name="Down" x="512" y="320" width="64" height="64">
+   <properties>
+    <property name="image" value="down-64x64"/>
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
