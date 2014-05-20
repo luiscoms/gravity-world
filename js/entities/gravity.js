@@ -6,6 +6,8 @@ game.GravityEntity = me.CollectableEntity.extend({
         this.parent(x, y, settings);
 
         this.gravity = me.sys.gravity;
+
+        this.collidable = true;
     },
 
     // call by the engine when colliding with another object
