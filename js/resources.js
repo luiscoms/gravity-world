@@ -12,6 +12,7 @@ game.resources = [
     {name: "up-64x64",  type:"image", src: "data/img/blocks/up-64x64.png"},
     {name: "coin-64x64",  type:"image", src: "data/img/blocks/coin-64x64.png"},
 
+    {name: "ahome",  type:"image", src: "data/img/buttons/ahome.png"},
     {name: "bt-84x72",  type:"image", src: "data/img/buttons/bt-84x72.png"},
     {name: "bback",  type:"image", src: "data/img/buttons/bback.png"},
     {name: "bfront",  type:"image", src: "data/img/buttons/bfront.png"},

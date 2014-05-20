@@ -61,6 +61,21 @@ game.HUD.Container = me.ObjectContainer.extend({
             dragMove: function () {}
         });
 
+        // Home
+        this.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "bt-84x72",
+                "subimage" : "ahome",
+                x: 10,
+                y: 10,
+                "onClick" : function () {
+                    me.state.change(me.state.MENU);
+                    return true;
+                }
+            }),
+            2 // z-index
+        );
+
         this.addChild(
             new game.HUD.GUI_Button({
                 "image" : "bt-84x72",
