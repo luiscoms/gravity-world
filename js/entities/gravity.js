@@ -13,6 +13,7 @@ game.GravityEntity = me.CollectableEntity.extend({
     // call by the engine when colliding with another object
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
+        if (obj.name !== "Rock") return false;
         // make sure it cannot be collected "again"
         this.collidable = false;
         // remove it

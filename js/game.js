@@ -50,6 +50,7 @@ var game = {
         me.pool.register("Coin", game.Coin);
         me.pool.register("Down", game.GravityEntity);
         me.pool.register("Up", game.GravityEntity);
+        me.pool.register("Shell", game.Shell);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.ESC, "esc");
