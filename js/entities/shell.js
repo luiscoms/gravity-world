@@ -1,5 +1,5 @@
 /**
- * Coin Entity
+ * Shell Entity
  */
 game.Shell = me.ObjectEntity.extend({
     // extending the init function is not mandatory
@@ -9,31 +9,45 @@ game.Shell = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         this.gravity = me.sys.gravity;
-        this.collidable = true;
+        this.name = "Shell";
         this.setVelocity(5, 15);
+
+        this.canGoRight = true;
+        this.canGoLeft = true;
     },
 
     update: function(dt) {
         this.gravity = me.sys.gravity;
-        // update player position
-
-        var res = this.updateMovement();
         // if (res.yprop.type && res.yprop.type != "solid") console.log("res.yprop.type", res.yprop.type);
         // if (res.xprop.type && res.xprop.type != "solid") console.log("res.xprop.type", res.xprop.type);
+
+        this.canGoRight = true;
+        this.canGoLeft = true;
+
+        // update shell position
+        var res = this.updateMovement();
+        if (res.xprop.type == "solid") {
+            // x axis
+            if (res.x < 0) {
+                this.canGoLeft = false;
+                // console.log("x axis : left side !");
+            } else {
+                this.canGoRight = false;
+                // console.log("x axis : right side !");
+            }
+        }
 
         // check for collision
         var collision = me.game.world.collide(this);
 
-        if (collision)
-            console.log("Collision with", collision.obj.name);
+        if (collision) {
+            console.log(this.name, " Collision with ", collision.obj.name);
+        }
         if (collision && collision.obj.name == "Rock") {
-            console.log("Collision with", collision.obj.name);
+            //console.log("Collision with", collision.obj.name);
 
             // if we collide with the player
             if (collision.obj.name == "Rock") {
-                if (res.xprop.type == "solid") {
-                    collision.obj.stop();
-                }
                 if (collision.x > 0) {
                     this.vel.x -= this.accel.x * me.timer.tick;
                 } else {
@@ -43,7 +57,6 @@ game.Shell = me.ObjectEntity.extend({
         } else {
             this.vel.x = 0;
         }
-
 
 // check for collision result with the environment
 // if (res.x != 0)
@@ -70,24 +83,10 @@ game.Shell = me.ObjectEntity.extend({
 // var updated = (this.vel.x!==0 || this.vel.y!==0);
 
         if (this.vel.x !== 0 || this.vel.y !== 0) {
-            console.log("Shell vel.x", this.vel.x);
             this.parent(dt);
             // debugger;
             return true;
         }
         return false;
-    },
-
-    onTileBreak: function() {
-            console.log("Shell onTileBreak");
-        game.Rock.walking = false;
-        game.Rock.stop();
-
-        // this.vel.x += this.accel.x * me.timer.tick;
-
-        // make sure it cannot be collected "again"
-        //this.collidable = false;
-        // remove it
-        //me.game.world.removeChild(this);
     }
 });
