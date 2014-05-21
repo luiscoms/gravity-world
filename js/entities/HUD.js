@@ -64,7 +64,7 @@ game.HUD.Container = me.ObjectContainer.extend({
         // Home
         this.addChild(
             new game.HUD.GUI_Button({
-                "image" : "bt-84x72",
+                "image" : "bt01-84x72",
                 "subimage" : "ahome",
                 x: 10,
                 y: 10,
@@ -76,9 +76,24 @@ game.HUD.Container = me.ObjectContainer.extend({
             2 // z-index
         );
 
+        // Reload
         this.addChild(
             new game.HUD.GUI_Button({
-                "image" : "bt-84x72",
+                "image" : "bt01-84x72",
+                "subimage" : "areload",
+                x: 104,
+                y: 10,
+                "onClick" : function () {
+                    me.levelDirector.reloadLevel();
+                    return true;
+                }
+            }),
+            2 // z-index
+        );
+
+        this.addChild(
+            new game.HUD.GUI_Button({
+                "image" : "bt02-84x72",
                 "subimage" : "bback",
                 "opacity" : 0.5,
                 x: 10,
@@ -98,7 +113,7 @@ game.HUD.Container = me.ObjectContainer.extend({
 
         this.addChild(
             new game.HUD.GUI_Button({
-                "image" : "bt-84x72",
+                "image" : "bt02-84x72",
                 "subimage" : "bfront",
                 "opacity" : 0.5,
                 x: 870,
@@ -180,7 +195,6 @@ game.HUD.ScoreItem = me.Renderable.extend({
 
 game.HUD.GUI_Button = me.ObjectContainer.extend({
     init: function (settings) {
-        console.log("GUI_Button init!");
         // call the parent constructor
         this.parent();
 

@@ -14,7 +14,9 @@ game.resources = [
     {name: "shellA",  type:"image", src: "data/img/blocks/hd/shellA.png"},
 
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome.png"},
-    {name: "bt-84x72",  type:"image", src: "data/img/buttons/bt-84x72.png"},
+    {name: "areload",  type:"image", src: "data/img/buttons/hd/areload.png"},
+    {name: "bt01-84x72",  type:"image", src: "data/img/buttons/bt01-84x72.png"},
+    {name: "bt02-84x72",  type:"image", src: "data/img/buttons/bt02-84x72.png"},
     {name: "bback",  type:"image", src: "data/img/buttons/bback.png"},
     {name: "bfront",  type:"image", src: "data/img/buttons/bfront.png"},
     {name: "bt01big",  type:"image", src: "data/img/buttons/hd/bt01big.png"},
