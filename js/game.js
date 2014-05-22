@@ -1,5 +1,5 @@
 /*global me: true, game: true */
-/* Game namespace */
+/** @namespace */
 var game = {
 
     // an object where to store game information

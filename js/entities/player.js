@@ -1,9 +1,26 @@
-game.Player = me.ObjectEntity.extend({
-
+/**
+ * @class
+ * @extends me.ObjectEntity
+ * @memberOf game
+ * @constructor
+ */
+game.Player = me.ObjectEntity.extend(
+/** @scope game.Player.prototype */
+{
+    /**
+     * @ignore
+     */
     init: function(x, y, settings) {
         // call the constructor
         this.parent(x, y, settings);
 
+        /**
+         * Name of the player
+         * @memberOf game.Player
+         * @type String
+         * @default Rock
+         * @name name
+         */
         this.name = "Rock";
         this.walking = false;
 
@@ -54,6 +71,15 @@ game.Player = me.ObjectEntity.extend({
         this.vel.x = 0;
     },
 
+    /**
+     * update function called by the game manager on each game loop
+     * @name update
+     * @memberOf game.Player
+     * @function
+     * @protected
+     * @param {Number} dt time since the last update in milliseconds.
+     * @return {Boolean}
+     **/
     update: function(dt) {
         // set gravity from the global value
         this.gravity = me.sys.gravity;
