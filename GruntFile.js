@@ -48,6 +48,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    jsdoc: {
+        dist : {
+            src: ['js/*.js', 'js/**/*.js', 'lib/melonJS-1.0.0.js'],
+            options: {
+                destination: 'doc'
+            }
+        }
+    },
     notify: {
       buid: {
         options: {
@@ -62,5 +70,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-jsdoc');
   grunt.registerTask('default', ['concat', 'uglify', 'copy', 'processhtml', 'notify:buid']);
 }
