@@ -33,37 +33,26 @@ game.Player = me.ObjectEntity.extend(
         this.renderable.addAnimation("rock_stand", [0]);
         this.renderable.addAnimation("rock_walk", [1, 2, 3, 4, 5, 6, 7, 8, 9]);
         this.renderable.setCurrentAnimation("rock_stand");
-
-        this.canGoRight = true;
-        this.canGoLeft = true;
     },
 
     walkLeft: function() {
-        if (this.canGoLeft) {
-            if (!this.renderable.isCurrentAnimation("rock_walk")) {
-                this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
-            }
-            // flip the sprite on horizontal axis
-            this.flipX(false);
-            // update the entity velocity
-            this.vel.x -= this.accel.x * me.timer.tick;
-        } else {
-            this.stop();
+        if (!this.renderable.isCurrentAnimation("rock_walk")) {
+            this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
         }
+        // flip the sprite on horizontal axis
+        this.flipX(false);
+        // update the entity velocity
+        this.vel.x -= this.accel.x * me.timer.tick;
     },
 
     walkRight: function() {
-        if (this.canGoRight) {
-            if (!this.renderable.isCurrentAnimation("rock_walk")) {
-                this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
-            }
-            // unflip the sprite
-            this.flipX(true);
-            // update the entity velocity
-            this.vel.x += this.accel.x * me.timer.tick;
-        } else {
-            this.stop();
+        if (!this.renderable.isCurrentAnimation("rock_walk")) {
+            this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
         }
+        // unflip the sprite
+        this.flipX(true);
+        // update the entity velocity
+        this.vel.x += this.accel.x * me.timer.tick;
     },
 
     stop: function() {
@@ -84,8 +73,8 @@ game.Player = me.ObjectEntity.extend(
         // set gravity from the global value
         this.gravity = me.sys.gravity;
 
-        this.canGoRight = true;
-        this.canGoLeft = true;
+        // check & update player movement
+        var updated = this.updateMovement();
 
         // check if we fell into a hole
         if (!this.inViewport ||
@@ -100,18 +89,10 @@ game.Player = me.ObjectEntity.extend(
         }
 
         // check for collision
-        var collision = me.game.world.collide(this);
-
-        if (collision && collision.obj.name == "Shell") {
-            this.canGoRight = collision.obj.canGoRight;
-            this.canGoLeft = collision.obj.canGoLeft;
-        }
-
-        // check & update player movement
-        var updated = this.updateMovement();
+        me.game.world.collide(this);
 
         // update animation if necessary
-        if (updated || this.vel.x !== 0 || this.vel.y !== 0) {
+        if (this.vel.x !== 0 || this.vel.y !== 0) {
             // update object animation
             this.parent(dt);
             return true;

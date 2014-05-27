@@ -56,6 +56,7 @@ game.HUD.Container = me.ObjectContainer.extend({
                 // call the parent function
                 this.parent(e);
                 game.Rock.walking = false;
+                game.Rock.stop();
             },
             dragMove: function () {}
         });
@@ -138,9 +139,9 @@ game.HUD.Container = me.ObjectContainer.extend({
 
 game.HUD.Joystick = me.ObjectContainer.extend({
     update : function() {
-        if (!game.Rock.walking && game.Rock.canGoLeft && me.input.isKeyPressed('left')) {
+        if (!game.Rock.walking && me.input.isKeyPressed('left')) {
             game.Rock.walkLeft();
-        } else if (!game.Rock.walking && game.Rock.canGoRight &&me.input.isKeyPressed('right')) {
+        } else if (!game.Rock.walking && me.input.isKeyPressed('right')) {
             game.Rock.walkRight();
         } else if (!game.Rock.walking) {
             /** Give some seasonal cheer. */
