@@ -12,6 +12,9 @@ game.resources = [
     {name: "up-64x64",  type:"image", src: "data/img/blocks/up-64x64.png"},
     {name: "coin-64x64",  type:"image", src: "data/img/blocks/coin-64x64.png"},
     {name: "shellA",  type:"image", src: "data/img/blocks/hd/shellA.png"},
+    {name: "lock-66x68",  type:"image", src: "data/img/blocks/lock-66x68.png"},
+    {name: "bombdet-64x64",  type:"image", src: "data/img/blocks/bombdet-64x64.png"},
+    {name: "bombset01-64x60",  type:"image", src: "data/img/blocks/bombset01-64x60.png"},
 
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome.png"},
     {name: "areload",  type:"image", src: "data/img/buttons/hd/areload.png"},
