@@ -56,7 +56,7 @@ game.Player = me.ObjectEntity.extend(
     },
 
     stop: function() {
-        this.renderable.setCurrentAnimation("rock_stand");
+        this.renderable && this.renderable.setCurrentAnimation("rock_stand");
         this.vel.x = 0;
     },
 
