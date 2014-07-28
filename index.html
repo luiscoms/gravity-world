@@ -9,6 +9,10 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
     </head>
     <body>
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+
+<div id="status">
+</div>
         <!-- Canvas placeholder -->
         <div id="screen"></div>
 
@@ -34,6 +38,7 @@
         <script type="text/javascript" src="js/screens/title.js"></script>
         <script type="text/javascript" src="js/screens/play.js"></script>
         <!-- /build -->
+        <script type="text/javascript" src="js/social.js"></script>
 
         <!-- Bootstrap & Mobile optimization tricks -->
         <script type="text/javascript">
