@@ -5,7 +5,24 @@ var game = {
     // an object where to store game information
     data : {
         // score
-        score : 0
+        score : 0,
+        levels: [
+            { reached: true },//1
+            { reached: true },
+            { reached: true },
+            { reached: true },
+            { reached: false },//5
+            { reached: true },
+            { reached: true },
+            { reached: true },
+            { reached: true },
+            { reached: true },//10
+            { reached: true },
+            { reached: true },
+            { reached: true },
+            { reached: true },
+            { reached: true },//15
+        ]
     },
 
 
@@ -40,7 +57,8 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
-        me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(me.state.MENU, new game.StageSelectScreen());
+        me.state.set(me.state.READY, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
         // set a global fading transition for the screen
@@ -62,7 +80,7 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
 
         // Start the game.
-        me.state.change(me.state.MENU);
+        me.state.change(me.state.READY);
     }
 };
 

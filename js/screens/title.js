@@ -39,7 +39,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 centerX: true,
                 y: 440,
                 "onClick" : function () {
-                    me.state.change(me.state.PLAY);
+                    me.state.change(me.state.MENU);
                     return true;
                 }
             }),
@@ -53,14 +53,14 @@ game.TitleScreen = me.ScreenObject.extend({
                 // play something on tap / enter
                 // this will unlock audio on mobile devices
                 me.audio.play("cling");
-                me.state.change(me.state.PLAY);
+                me.state.change(me.state.MENU);
             }
         });
     },
 
     update: function () {
         if (me.input.isKeyPressed('enter')) {
-            me.state.change(me.state.PLAY);
+            me.state.change(me.state.MENU);
         }
         return true;
     },
