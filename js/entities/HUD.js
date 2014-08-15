@@ -190,10 +190,10 @@ game.HUD.GUI_Button = me.ObjectContainer.extend({
         var x = settings.x || 0, y = settings.y || 0, z = 1;
 
         if (settings.centerX) {
-            x = (960 / 2) - (me.loader.getImage(settings.image).width / 2);
+            x = (me.video.getWidth() / 2) - (me.loader.getImage(settings.image).width / 2);
         }
         if (settings.centerY) {
-            y = (640 / 2) - (me.loader.getImage(settings.image).height / 2);
+            y = (me.video.getHeight() / 2) - (me.loader.getImage(settings.image).height / 2);
         }
 
         var ImageButton = me.GUI_Object.extend({
