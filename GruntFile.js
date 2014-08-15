@@ -1,6 +1,11 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: {
+      build: ["build"],
+      dist: ["dist"],
+      doc: ["doc"],
+    },
     concat: {
       dist: {
         src: ['lib/melonJS-1.0.0.js', 'lib/plugins/*.js', 'js/game.js', 'js/resources.js','js/**/*.js'],
@@ -66,10 +71,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.registerTask('default', ['concat', 'uglify', 'copy', 'processhtml', 'notify:buid']);
+  grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'processhtml', 'notify:buid']);
 }
