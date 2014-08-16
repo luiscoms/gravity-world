@@ -7,21 +7,21 @@ var game = {
         // score
         score : 0,
         levels: [
-            { reached: true },//1
-            { reached: true },
-            { reached: true },
-            { reached: true },
+            { reached: false },//1
+            { reached: false },
+            { reached: false },
+            { reached: false },
             { reached: false },//5
-            { reached: true },
-            { reached: true },
-            { reached: true },
-            { reached: true },
-            { reached: true },//10
-            { reached: true },
-            { reached: true },
-            { reached: true },
-            { reached: true },
-            { reached: true },//15
+            { reached: false },
+            { reached: false },
+            { reached: false },
+            { reached: false },
+            { reached: false },//10
+            { reached: false },
+            { reached: false },
+            { reached: false },
+            { reached: false },
+            { reached: false },//15
         ]
     },
 

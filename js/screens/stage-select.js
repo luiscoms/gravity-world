@@ -48,105 +48,115 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     num = 11;
                 break;
             }
-            locked = !game.data.levels[num-1];
+            locked = num !== 1 && !game.data.levels[num-1].reached;
+            subimage = "a" + strPad(num++, 2, 0);
             if (locked) {
                 subimage = "alock";
-            } else {
-                subimage = "a" + strPad(num++, 2, 0);
             }
             // 1
             me.game.world.addChild(
                 new game.HUD.GUI_Button({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
+                    "locked" : locked,
                     x: me.video.getWidth()/2 - 84/2 - (84 + 84) * 2,
                     y: y,
-                    "onClick" : function () {
-                        me.state.change(me.state.PLAY);
+                    "onClick" : function (settings) {
+                        if (!settings.locked) {
+                            me.state.change(me.state.PLAY);
+                        }
                         return true;
                     }
                 }),
                 2 // z-index
             );
 
-            locked = !game.data.levels[num-1];
+            locked = !game.data.levels[num-1].reached;
+            subimage = "a" + strPad(num++, 2, 0);
             if (locked) {
                 subimage = "alock";
-            } else {
-                subimage = "a" + strPad(num++, 2, 0);
             }
             // 2
             me.game.world.addChild(
                 new game.HUD.GUI_Button({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
+                    "locked" : locked,
                     x: me.video.getWidth()/2 - 84/2 - (84 + 84),
                     y: y,
-                    "onClick" : function () {
-                        me.state.change(me.state.PLAY);
+                    "onClick" : function (settings) {
+                        if (!settings.locked) {
+                            me.state.change(me.state.PLAY);
+                        }
                         return true;
                     }
                 }),
                 2 // z-index
             );
 
-            locked = !game.data.levels[num-1];
+            locked = !game.data.levels[num-1].reached;
+            subimage = "a" + strPad(num++, 2, 0);
             if (locked) {
                 subimage = "alock";
-            } else {
-                subimage = "a" + strPad(num++, 2, 0);
             }
             // 3
             me.game.world.addChild(
                 new game.HUD.GUI_Button({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
+                    "locked" : locked,
                     centerX: true,
                     y: y,
-                    "onClick" : function () {
-                        me.state.change(me.state.PLAY);
+                    "onClick" : function (settings) {
+                        if (!settings.locked) {
+                            me.state.change(me.state.PLAY);
+                        }
                         return true;
                     }
                 }),
                 2 // z-index
             );
 
-            locked = !game.data.levels[num-1];
+            locked = !game.data.levels[num-1].reached;
+            subimage = "a" + strPad(num++, 2, 0);
             if (locked) {
                 subimage = "alock";
-            } else {
-                subimage = "a" + strPad(num++, 2, 0);
             }
             // 4
             me.game.world.addChild(
                 new game.HUD.GUI_Button({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
+                    "locked" : locked,
                     x: me.video.getWidth()/2 - 84/2 + (84 + 84),
                     y: y,
-                    "onClick" : function () {
-                        me.state.change(me.state.PLAY);
+                    "onClick" : function (settings) {
+                        if (!settings.locked) {
+                            me.state.change(me.state.PLAY);
+                        }
                         return true;
                     }
                 }),
                 2 // z-index
             );
 
-            locked = !game.data.levels[num-1];
+            locked = !game.data.levels[num-1].reached;
+            subimage = "a" + strPad(num++, 2, 0);
             if (locked) {
                 subimage = "alock";
-            } else {
-                subimage = "a" + strPad(num++, 2, 0);
             }
             // 5
             me.game.world.addChild(
                 new game.HUD.GUI_Button({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
+                    "locked" : locked,
                     x: me.video.getWidth()/2 - 84/2 + (84 + 84) * 2,
                     y: y,
-                    "onClick" : function () {
-                        me.state.change(me.state.PLAY);
+                    "onClick" : function (settings) {
+                        if (!settings.locked) {
+                            me.state.change(me.state.PLAY);
+                        }
                         return true;
                     }
                 }),

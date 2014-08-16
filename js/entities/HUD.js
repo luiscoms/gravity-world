@@ -95,7 +95,7 @@ game.HUD.Container = me.ObjectContainer.extend({
             new game.HUD.GUI_Button({
                 "image" : "bt02-84x72",
                 "subimage" : "bback",
-                "opacity" : 0.5,
+                "opacity" : 0.8,
                 x: 10,
                 y: 560//,
                 // "onClick" : function () {
@@ -115,7 +115,7 @@ game.HUD.Container = me.ObjectContainer.extend({
             new game.HUD.GUI_Button({
                 "image" : "bt02-84x72",
                 "subimage" : "bfront",
-                "opacity" : 0.5,
+                "opacity" : 0.8,
                 x: 870,
                 y: 560//,
                 // "onClick" : function () {
@@ -205,7 +205,7 @@ game.HUD.GUI_Button = me.ObjectContainer.extend({
             },
             onClick : function() {
                 if (typeof settings.onClick === 'function') {
-                    settings.onClick();
+                    settings.onClick(settings);
                 }
             }
         });
