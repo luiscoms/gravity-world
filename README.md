@@ -1,7 +1,7 @@
 Gravity World
 ----
 
-HTML5 Game Based on MelonJS
+HTML5 Game Based on [MelonJS](http://melonjs.org/)
 
 Requires nodejs >= 0.10, npm >= 1.4 and [gruntjs](http://gruntjs.com/)
 
