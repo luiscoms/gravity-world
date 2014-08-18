@@ -103,7 +103,6 @@
    </properties>
   </object>
   <object name="Lock" x="768" y="512" width="64" height="64"/>
-  <object name="Lock" x="768" y="512" width="64" height="64"/>
   <object name="Detonator" x="256" y="512" width="64" height="64"/>
   <object name="Bomb" x="320" y="512" width="64" height="64"/>
  </objectgroup>
