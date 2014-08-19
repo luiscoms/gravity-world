@@ -22,8 +22,16 @@ game.HUD.Container = me.ObjectContainer.extend({
         // give a name
         this.name = "HUD";
 
-        // add our child score object at the right-top position
-        this.addChild(new game.HUD.ScoreItem(950, 5));
+        // add our child coins object at the right-top position
+        this.addChild(
+            new game.HUD.CoinsCount({
+                "image" : "acoin",
+                "opacity" : 0.8,
+                x: -145,
+                y: 10
+            }),
+            2 // z-index
+        );
 
         var HiddenButton = me.DraggableEntity.extend({
             init: function (x, y, settings) {
@@ -150,35 +158,70 @@ game.HUD.Joystick = me.ObjectContainer.extend({
     }
 });
 
-/**
- * a basic HUD item to display score
- */
-game.HUD.ScoreItem = me.Renderable.extend({
-    init: function(x, y) {
+game.HUD.CoinsCount = me.ObjectContainer.extend({
+    init: function (settings) {
         // call the parent constructor
-        // (size does not matter here)
-        this.parent(new me.Vector2d(x, y), 10, 10);
+        this.parent();
 
-        // create a font
-        this.font = new me.Font("Marker-Felt, Arial, sans-serif", 20, "black", "right");
+        var x = settings.x || 0, y = settings.y || 0, z = 1;
+        x = x < 0 ? me.video.getWidth() + x : x;
+        y = y < 0 ? me.video.getHeight() + y : y;
 
-        // local copy of the global score
-        this.score = -1;
-
-        // make sure we use screen coordinates
-        this.floating = true;
-    },
-    update : function () {
-        // we don't do anything fancy here, so just
-        // return true if the score has been updated
-        if (this.score !== game.data.score) {
-            this.score = game.data.score;
-            return true;
+        if (settings.centerX) {
+            x = (me.video.getWidth() / 2) - (me.loader.getImage(settings.image).width / 2);
         }
-        return false;
-    },
-    draw : function (context) {
-        this.font.draw(context, game.data.score, this.pos.x, this.pos.y);
+        if (settings.centerY) {
+            y = (me.video.getHeight() / 2) - (me.loader.getImage(settings.image).height / 2);
+        }
+
+        var ImageButton = me.GUI_Object.extend({
+            init: function (x, y, settings) {
+                // call the parent constructor
+                this.parent(x, y, settings);
+
+                this.setOpacity(settings.opacity);
+            }
+        });
+
+        var CoinsNum = me.Renderable.extend({
+            init: function(x, y) {
+                // call the parent constructor
+                // (size does not matter here)
+                this.parent(new me.Vector2d(x, y), 10, 10);
+
+                // create a font
+                this.font = new me.Font("Marker-Felt, Arial, sans-serif", 20, "black", "right");
+
+                // local copy of the global score
+                this.score = -1;
+
+                // make sure we use screen coordinates
+                this.floating = true;
+            },
+            update : function () {
+                // we don't do anything fancy here, so just
+                // return true if the score has been updated
+                if (this.score !== game.data.score) {
+                    this.score = game.data.score;
+                    return true;
+                }
+                return false;
+            },
+            draw : function (context) {
+                this.font.draw(context, game.data.score, this.pos.x, this.pos.y);
+            }
+        });
+
+        // Add a button
+        this.addChild(
+            new ImageButton(x, y, { "image" : settings.image, "opacity" : settings.opacity }), z
+        );
+
+        this.addChild(
+            new CoinsNum(x+110, y+19), z+1
+        );
+
+        return true;
     }
 });
 
@@ -188,6 +231,8 @@ game.HUD.GUI_Button = me.ObjectContainer.extend({
         this.parent();
 
         var x = settings.x || 0, y = settings.y || 0, z = 1;
+        x = x < 0 ? me.video.getWidth() + x : x;
+        y = y < 0 ? me.video.getHeight() + y : y;
 
         if (settings.centerX) {
             x = (me.video.getWidth() / 2) - (me.loader.getImage(settings.image).width / 2);
