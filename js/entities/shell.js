@@ -1,5 +1,5 @@
 /**
- * Coin Entity
+ * Shell Entity
  */
 game.Shell = me.ObjectEntity.extend({
     // extending the init function is not mandatory
@@ -13,6 +13,26 @@ game.Shell = me.ObjectEntity.extend({
         this.setVelocity(5, 15);
     },
 
+    onCollision: function(res, obj) {
+        // console.log(this.name, 'collision with', obj.name, res);
+        // if we collide with the player
+        if (obj.name == "Rock") {
+            this.pos.x += res.x;
+            obj.pos.y -= res.y;
+            // if (res.x < 0) {
+            //     this.vel.x -= this.accel.x * me.timer.tick;
+            // } else {
+            //     this.vel.x += this.accel.x * me.timer.tick;
+            // }
+        } else if (obj.type && obj.type == 'solid') {
+            // this.vel.x = 0;
+            this.pos.x += res.x;
+        } else {
+            obj.pos.x -= res.x;
+            obj.pos.y -= res.y;
+        }
+    },
+
     update: function(dt) {
         this.gravity = me.sys.gravity;
         // update player position
@@ -24,26 +44,18 @@ game.Shell = me.ObjectEntity.extend({
         // check for collision
         var collision = me.game.world.collide(this);
 
-        if (collision)
-            console.log("Collision with", collision.obj.name);
-        if (collision && collision.obj.name == "Rock") {
-            console.log("Collision with", collision.obj.name);
-
+//         if (collision)
+//             console.log("Collision with", collision.obj.name);
+        if (collision) {
             // if we collide with the player
             if (collision.obj.name == "Rock") {
                 if (res.xprop.type == "solid") {
                     collision.obj.stop();
                 }
-                if (collision.x > 0) {
-                    this.vel.x -= this.accel.x * me.timer.tick;
-                } else {
-                    this.vel.x += this.accel.x * me.timer.tick;
-                }
             }
         } else {
             this.vel.x = 0;
         }
-
 
 // check for collision result with the environment
 // if (res.x != 0)
@@ -66,51 +78,15 @@ game.Shell = me.ObjectEntity.extend({
 //    console.log(res.yprop.type);
 // }
 
-// // check player status after collision check
-// var updated = (this.vel.x!==0 || this.vel.y!==0);
-
         if (this.vel.x !== 0 || this.vel.y !== 0) {
-            console.log("Shell vel.x", this.vel.x);
             this.parent(dt);
             // debugger;
             return true;
         }
         return false;
-    },
-
-    onTileBreak: function() {
-            console.log("Shell onTileBreak");
-        game.Rock.walking = false;
-        game.Rock.stop();
-
-        // this.vel.x += this.accel.x * me.timer.tick;
-
-        // make sure it cannot be collected "again"
-        //this.collidable = false;
-        // remove it
-        //me.game.world.removeChild(this);
     }
 });
 
-
-game.Lock = game.Shell.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
-    init: function(x, y, settings) {
-        this.name = "Lock";
-
-        // define this here instead of tiled
-        settings.image = "lock-66x68";
-
-        // adjust the size setting information to match the sprite size
-        // so that the entity object is created with the right size
-        settings.spritewidth = settings.width = 64;
-        settings.spriteheight = settings.height = 68;
-
-        // call the parent constructor
-        this.parent(x, y, settings);
-    }
-});
 
 game.Detonator = game.Shell.extend({
     // extending the init function is not mandatory

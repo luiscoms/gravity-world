@@ -91,18 +91,18 @@
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
-  <object name="Shell" x="192" y="128" width="64" height="64">
+  <object name="Shell" x="339" y="192" width="64" height="64">
    <properties>
     <property name="image" value="shellA"/>
    </properties>
   </object>
-  <object name="Down" x="512" y="320" width="64" height="64">
+  <object name="Down" x="256" y="192" width="64" height="64">
    <properties>
     <property name="image" value="down-64x64"/>
     <property name="spritewidth" value="64"/>
    </properties>
   </object>
-  <object name="Lock" x="768" y="512" width="64" height="64"/>
+  <object name="Lock" x="576" y="320" width="64" height="64"/>
   <object name="Detonator" x="256" y="512" width="64" height="64"/>
   <object name="Bomb" x="320" y="512" width="64" height="64"/>
  </objectgroup>
