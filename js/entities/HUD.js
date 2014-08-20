@@ -25,7 +25,6 @@ game.HUD.Container = me.ObjectContainer.extend({
         // add our child coins object at the right-top position
         this.addChild(
             new game.HUD.CoinsCount({
-                "image" : "acoin",
                 "opacity" : 0.8,
                 x: -145,
                 y: 10
@@ -212,9 +211,14 @@ game.HUD.CoinsCount = me.ObjectContainer.extend({
             }
         });
 
-        // Add a button
+        // Add the coin image
         this.addChild(
-            new ImageButton(x, y, { "image" : settings.image, "opacity" : settings.opacity }), z
+            new ImageButton(x-42, y+5, { "image" : 'bcoin', "opacity" : settings.opacity }), z
+        );
+
+        // Add the hold coins
+        this.addChild(
+            new ImageButton(x, y, { "image" : 'acoin', "opacity" : settings.opacity }), z
         );
 
         this.addChild(
