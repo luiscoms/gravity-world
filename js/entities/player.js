@@ -23,6 +23,7 @@ game.Player = me.ObjectEntity.extend(
          */
         this.name = "Rock";
         this.walking = false;
+        this.type = "player";
 
         // set the default horizontal & vertical speed (accel vector)
         this.setVelocity(5, 15);
@@ -89,7 +90,7 @@ game.Player = me.ObjectEntity.extend(
         }
 
         // check for collision
-        me.game.world.collide(this);
+        me.game.world.collide(this, true);
 
         // update animation if necessary
         if (this.vel.x !== 0 || this.vel.y !== 0) {

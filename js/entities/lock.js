@@ -24,6 +24,11 @@ game.Lock = me.ObjectEntity.extend({
         this.type = "solid";
     },
 
+    update: function(dt) {
+        // check for collision
+        var collision = me.game.world.collide(this);
+    },
+
     onCollision: function(res, obj) {
         // console.log(this.name, 'collision with', obj.name);
         obj.vel.x = 0;

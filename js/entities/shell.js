@@ -8,6 +8,7 @@ game.Shell = me.ObjectEntity.extend({
         // call the parent constructor
         this.parent(x, y, settings);
 
+        this.type = 'pushable';
         this.gravity = me.sys.gravity;
         this.collidable = true;
         this.setVelocity(5, 15);
@@ -16,20 +17,31 @@ game.Shell = me.ObjectEntity.extend({
     onCollision: function(res, obj) {
         // console.log(this.name, 'collision with', obj.name, res);
         // if we collide with the player
-        if (obj.name == "Rock") {
-            this.pos.x += res.x;
+        if (obj.type == 'player') {
+            // this.pos.x += res.x;
+            obj.pos.x -= res.x;
             obj.pos.y -= res.y;
-            // if (res.x < 0) {
-            //     this.vel.x -= this.accel.x * me.timer.tick;
-            // } else {
-            //     this.vel.x += this.accel.x * me.timer.tick;
-            // }
-        } else if (obj.type && obj.type == 'solid') {
-            // this.vel.x = 0;
+            if (res.y == 0) {
+                if (res.x < 0) {
+                    this.vel.x -= this.accel.x * me.timer.tick;
+                } else {
+                    this.vel.x += this.accel.x * me.timer.tick;
+                }
+            }
+        } else if (obj.type == 'solid') {
+            this.vel.x = 0;
             this.pos.x += res.x;
         } else {
             obj.pos.x -= res.x;
             obj.pos.y -= res.y;
+
+            if (res.y == 0) {
+                if (res.x < 0) {
+                    this.vel.x -= this.accel.x * me.timer.tick;
+                } else {
+                    this.vel.x += this.accel.x * me.timer.tick;
+                }
+            }
         }
     },
 
