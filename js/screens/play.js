@@ -27,15 +27,20 @@ game.PlayScreen = me.ScreenObject.extend({
 // });
 
     },
-    onResetEvent: function() {
+    onResetEvent: function(info) {
         // add our HUD to the game world
         this.HUD = new game.HUD.Container();
         me.game.world.addChild(this.HUD);
 
         me.game.onLevelLoaded = this.onLevelLoaded.bind(this);
-
+        var stagename;
+        if (info) {
+            stagename = 'stage-' + strPad(info.world, 2, 0) + '.' + strPad(info.stage, 2, 0);
+        } else {
+            stagename = 'demo';
+        }
         // load a level
-        me.levelDirector.loadLevel("demo");
+        me.levelDirector.loadLevel(stagename);
     },
     onDestroyEvent: function() {
         // remove the HUD from the game world

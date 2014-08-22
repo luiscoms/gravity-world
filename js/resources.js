@@ -49,5 +49,13 @@ game.resources = [
     {name: "a14",  type:"image", src: "data/img/buttons/a14-47x53.png"},
     {name: "a15",  type:"image", src: "data/img/buttons/a15-47x53.png"},
 
-    {name: "demo", type: "tmx", src: "data/map/demo.tmx"}
+    // stages
+    {name: "demo", type: "tmx", src: "data/map/demo.tmx"},
+    {name: "stage-01.01", type: "tmx", src: "data/map/stage-01.01.tmx"},
+    {name: "stage-01.02", type: "tmx", src: "data/map/stage-01.02.tmx"},
+    {name: "stage-01.03", type: "tmx", src: "data/map/stage-01.03.tmx"},
+    {name: "stage-01.04", type: "tmx", src: "data/map/stage-01.04.tmx"},
+    {name: "stage-01.05", type: "tmx", src: "data/map/stage-01.05.tmx"},
+    {name: "stage-01.06", type: "tmx", src: "data/map/stage-01.06.tmx"},
+    {name: "stage-01.07", type: "tmx", src: "data/map/stage-01.07.tmx"},
 ];

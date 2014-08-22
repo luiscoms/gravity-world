@@ -59,11 +59,13 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "image" : "bt01-84x72",
                     "subimage" : subimage,
                     "locked" : locked,
+                    "world" : 1,
+                    "stage" : num,
                     x: me.video.getWidth()/2 - 84/2 - (84 + 84) * 2,
                     y: y,
                     "onClick" : function (settings) {
                         if (!settings.locked) {
-                            me.state.change(me.state.PLAY);
+                            me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
                         return true;
                     }
