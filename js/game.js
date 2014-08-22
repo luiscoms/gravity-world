@@ -80,7 +80,7 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
 
         // Start the game.
-        me.state.change(me.state.READY);
+        me.state.change(me.state.PLAY);
     }
 };
 
