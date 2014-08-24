@@ -1,16 +1,12 @@
-/**
- * Shell Entity
- */
-game.Shell = me.ObjectEntity.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
+
+game.PushableEntity = me.ObjectEntity.extend({
+
     init: function(x, y, settings) {
         // call the parent constructor
         this.parent(x, y, settings);
 
         this.type = 'pushable';
         this.gravity = me.sys.gravity;
-        this.collidable = true;
         this.setVelocity(5, 15);
     },
 
@@ -19,7 +15,7 @@ game.Shell = me.ObjectEntity.extend({
         // if we collide with the player
         if (obj.type == 'player') {
             // this.pos.x += res.x;
-            obj.pos.x -= res.x;
+            obj.pos.x -= res.x+1;
             obj.pos.y -= res.y;
             if (res.y == 0) {
                 if (res.x < 0) {
@@ -99,10 +95,22 @@ game.Shell = me.ObjectEntity.extend({
     }
 });
 
+/**
+ * Shell Entity
+ */
+game.Shell = game.PushableEntity.extend({
+    init: function(x, y, settings) {
+        settings.image = "shellA";
+        settings.spritewidth = settings.width = 64;
+        settings.spriteheight = settings.height = 64;
 
-game.Detonator = game.Shell.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
+        // call the parent constructor
+        this.parent(x, y, settings);
+    },
+});
+
+
+game.Detonator = game.PushableEntity.extend({
     init: function(x, y, settings) {
         this.name = "Detonator";
 
@@ -120,9 +128,7 @@ game.Detonator = game.Shell.extend({
 });
 
 
-game.Bomb = game.Shell.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
+game.Bomb = game.PushableEntity.extend({
     init: function(x, y, settings) {
         this.name = "Bomb";
 

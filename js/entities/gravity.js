@@ -1,4 +1,4 @@
-game.GravityEntity = me.CollectableEntity.extend({
+game.GravityEntity = game.PushableEntity.extend({
     // extending the init function is not mandatory
     // unless you need to add some extra initialization
     init: function(x, y, settings) {
@@ -13,6 +13,8 @@ game.GravityEntity = me.CollectableEntity.extend({
     // call by the engine when colliding with another object
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
+        this.parent(res, obj);
+
         if (obj.name !== "Rock") return false;
         // make sure it cannot be collected "again"
         this.collidable = false;
@@ -35,11 +37,5 @@ game.GravityEntity = me.CollectableEntity.extend({
             break;
 
         }
-    },
-
-    update: function() {
-        this.gravity = me.sys.gravity;
-        this.updateMovement();
-        return true;
     }
 });
