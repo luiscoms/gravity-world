@@ -10,8 +10,19 @@ cd $BIN_DIR/../
 #npm install
 grunt
 
-ssh luiscoms@luiscoms.com.br "rm -rf "$DIRFROM
+cd build
 
-scp -r build luiscoms@luiscoms.com.br:$DIRFROM
+# zip filename -r files
+zip ../gravity-world -r .
 
-ssh luiscoms@luiscoms.com.br "rsync -ruv "$DIRFROM" "$DIRTO
+cd ..
+
+ssh luiscoms@luiscoms.com.br "rm -rf "$DIRFROM"; mkdir -p "$DIRFROM
+
+# scp -r build luiscoms@luiscoms.com.br:$DIRFROM
+scp gravity-world.zip luiscoms@luiscoms.com.br:$DIRFROM
+
+ssh luiscoms@luiscoms.com.br "unzip -o "$DIRFROM/gravity-world.zip" -d "$DIRTO
+# ssh luiscoms@luiscoms.com.br "rsync -ruv "$DIRFROM" "$DIRTO
+
+rm gravity-world.zip
