@@ -36,6 +36,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
             num = '',
             subimage = '',
             locked = true;
+
         for (var i = 1; i <= 3; i++) {
             switch(i){
                 case 1:
@@ -182,5 +183,24 @@ game.StageSelectScreen = me.ScreenObject.extend({
             y += 82; // 72(image height)+10(padding-top)
 
         };
+
+
+        // enable the demo stage
+        if (document.location.hash === "#debug") {
+            me.game.world.addChild(
+                new game.HUD.GUI_Button({
+                    "image" : "bt01-84x72",
+                    // "subimage" : subimage,
+                    "locked" : false,
+                    centerX: true,
+                    y: y,
+                    "onClick" : function (settings) {
+                        me.state.change(me.state.PLAY); //load demo
+                        return true;
+                    }
+                }),
+                2 // z-index
+            );
+        }
     }
 });
