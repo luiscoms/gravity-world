@@ -65,6 +65,7 @@ var game = {
         me.state.transition("fade", "#FFFFFF", 250);
 
         // register our entities in the object pool
+        me.pool.register("Arrow", game.Arrow);
         me.pool.register("Rock", game.Player);
         me.pool.register("Coin", game.Coin);
         me.pool.register("Down", game.GravityEntity);
@@ -80,7 +81,7 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.READY);
     }
 };
 
