@@ -55,33 +55,15 @@
     <property name="spritewidth" value="96"/>
    </properties>
   </object>
-  <object name="Up" x="256" y="512" width="64" height="64">
+  <object name="Up" x="256" y="512" width="64" height="64"/>
+  <object name="Arrow" x="13" y="96" width="64" height="64">
    <properties>
-    <property name="image" value="up-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="me.LevelEntity" x="0" y="64" width="64" height="64">
-   <properties>
-    <property name="image" value="arrow-64x64"/>
+    <property name="direction" value="left"/>
     <property name="to" value="stage-01.05"/>
    </properties>
   </object>
-  <object name="Down" x="576" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="down-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Shell" x="448" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="shellA"/>
-   </properties>
-  </object>
-  <object name="Shell" x="448" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="shellA"/>
-   </properties>
-  </object>
+  <object name="Down" x="576" y="128" width="64" height="64"/>
+  <object name="Shell" x="448" y="512" width="64" height="64"/>
+  <object name="Shell" x="448" y="128" width="64" height="64"/>
  </objectgroup>
 </map>

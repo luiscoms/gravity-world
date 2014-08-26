@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64" backgroundcolor="#6d6d6d">
+ <properties>
+  <property name="gravity" value="up"/>
+ </properties>
  <tileset firstgid="1" name="sand" tilewidth="64" tileheight="64">
   <image source="../img/map/sand-tiles-64x64.png" width="256" height="320"/>
  </tileset>
@@ -42,7 +45,7 @@
    AAAAAAUAAAAGAAAABwAAAAgAAAARAAAAEgAAABMAAAASAAAAEwAAAAkAAAAKAAAACwAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAQAAAABAAAAAgAAAAMAAAAEAAAAAgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAAEAAAAAQAAAAIAAAADAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAAEAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAgAAAAMAAAAEAAAAAQAAAAIAAAADAAAABAAAAAEAAAACAAAAAwAAAAQAAAABAAAAAgAAAAMAAAAEAAAA
   </data>
  </layer>
- <layer name="collision" width="15" height="10">
+ <layer name="collision" width="15" height="10" visible="0">
   <data encoding="base64">
    FQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAA
   </data>
@@ -55,59 +58,18 @@
     <property name="spritewidth" value="96"/>
    </properties>
   </object>
-  <object name="Up" x="192" y="448" width="64" height="64">
+  <object name="Up" x="192" y="448" width="64" height="64"/>
+  <object name="Arrow" x="883" y="288" width="64" height="64">
    <properties>
-    <property name="image" value="up-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="me.LevelEntity" x="877" y="256" width="64" height="64">
-   <properties>
-    <property name="image" value="arrow-64x64"/>
     <property name="to" value="stage-01.03"/>
    </properties>
   </object>
-  <object name="Coin" x="192" y="320" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Down" x="832" y="64" width="64" height="64">
-   <properties>
-    <property name="image" value="down-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="704" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="576" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="640" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="128" y="320" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="256" y="320" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
+  <object name="Coin" x="192" y="320" width="64" height="64"/>
+  <object name="Down" x="832" y="64" width="64" height="64"/>
+  <object name="Coin" x="704" y="128" width="64" height="64"/>
+  <object name="Coin" x="576" y="128" width="64" height="64"/>
+  <object name="Coin" x="640" y="128" width="64" height="64"/>
+  <object name="Coin" x="128" y="320" width="64" height="64"/>
+  <object name="Coin" x="256" y="320" width="64" height="64"/>
  </objectgroup>
 </map>

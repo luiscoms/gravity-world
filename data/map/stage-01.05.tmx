@@ -55,52 +55,18 @@
     <property name="spritewidth" value="96"/>
    </properties>
   </object>
-  <object name="Up" x="448" y="320" width="64" height="64">
+  <object name="Up" x="448" y="320" width="64" height="64"/>
+  <object name="Arrow" x="13" y="96" width="64" height="64">
    <properties>
-    <property name="image" value="up-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="me.LevelEntity" x="0" y="64" width="64" height="64">
-   <properties>
-    <property name="image" value="arrow-64x64"/>
+    <property name="direction" value="left"/>
     <property name="to" value="stage-01.06"/>
    </properties>
   </object>
-  <object name="Shell" x="576" y="320" width="64" height="64">
-   <properties>
-    <property name="image" value="shellA"/>
-   </properties>
-  </object>
-  <object name="Coin" x="832" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="768" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="704" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="576" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="640" y="512" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
+  <object name="Shell" x="576" y="320" width="64" height="64"/>
+  <object name="Coin" x="832" y="512" width="64" height="64"/>
+  <object name="Coin" x="768" y="512" width="64" height="64"/>
+  <object name="Coin" x="704" y="512" width="64" height="64"/>
+  <object name="Coin" x="576" y="512" width="64" height="64"/>
+  <object name="Coin" x="640" y="512" width="64" height="64"/>
  </objectgroup>
 </map>
