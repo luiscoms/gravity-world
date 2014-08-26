@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64" backgroundcolor="#6d6d6d">
+ <properties>
+  <property name="gravity" value="up"/>
+ </properties>
  <tileset firstgid="1" name="sand" tilewidth="64" tileheight="64">
   <image source="../img/map/sand-tiles-64x64.png" width="256" height="320"/>
  </tileset>
@@ -48,58 +51,24 @@
   </data>
  </layer>
  <objectgroup name="objects" width="15" height="10">
-  <object name="Rock" x="915" y="64" width="64" height="101">
+  <object name="Rock" x="896" y="64" width="58" height="96">
    <properties>
     <property name="image" value="player-96x102"/>
     <property name="spriteheight" value="102"/>
     <property name="spritewidth" value="96"/>
    </properties>
   </object>
-  <object name="me.LevelEntity" x="896" y="384" width="64" height="64">
+  <object name="Arrow" x="896" y="384" width="64" height="64">
    <properties>
-    <property name="image" value="arrow-64x64"/>
     <property name="to" value="stage-01.07"/>
    </properties>
   </object>
-  <object name="Shell" x="320" y="64" width="64" height="64">
-   <properties>
-    <property name="image" value="shellA"/>
-   </properties>
-  </object>
-  <object name="Coin" x="640" y="128" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="256" y="384" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="576" y="384" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Coin" x="640" y="384" width="64" height="64">
-   <properties>
-    <property name="image" value="coin-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Down" x="384" y="64" width="64" height="64">
-   <properties>
-    <property name="image" value="down-64x64"/>
-    <property name="spritewidth" value="64"/>
-   </properties>
-  </object>
-  <object name="Shell" x="320" y="256" width="64" height="64">
-   <properties>
-    <property name="image" value="shellA"/>
-   </properties>
-  </object>
+  <object name="Shell" x="320" y="256" width="64" height="64"/>
+  <object name="Shell" x="320" y="64" width="64" height="64"/>
+  <object name="Down" x="384" y="64" width="64" height="64"/>
+  <object name="Coin" x="640" y="128" width="64" height="64"/>
+  <object name="Coin" x="256" y="384" width="64" height="64"/>
+  <object name="Coin" x="640" y="384" width="64" height="64"/>
+  <object name="Coin" x="704" y="384" width="64" height="64"/>
  </objectgroup>
 </map>
