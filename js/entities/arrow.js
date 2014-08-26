@@ -19,5 +19,10 @@ game.Arrow = me.LevelEntity.extend({
                     break;
             }
         }
+    },
+
+    onCollision : function(res, obj) {
+        if (obj.type !== 'player') return false;
+        this.parent(res, obj);
     }
 });
