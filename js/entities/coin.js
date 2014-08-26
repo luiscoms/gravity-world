@@ -2,9 +2,10 @@
  * Coin Entity
  */
 game.Coin = me.CollectableEntity.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
     init: function(x, y, settings) {
+        settings.image = 'coin-64x64';
+        settings.spritewidth = 64;
+
         // call the parent constructor
         this.parent(x, y, settings);
     },

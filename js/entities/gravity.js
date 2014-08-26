@@ -2,6 +2,12 @@ game.GravityEntity = game.PushableEntity.extend({
     // extending the init function is not mandatory
     // unless you need to add some extra initialization
     init: function(x, y, settings) {
+        switch (settings.name.toLowerCase()) {
+        case 'up':
+        case 'down':
+            settings.image = settings.name.toLowerCase() + '-64x64';
+            break;
+        }
         // call the parent constructor
         this.parent(x, y, settings);
 
@@ -15,7 +21,7 @@ game.GravityEntity = game.PushableEntity.extend({
     onCollision: function(res, obj) {
         this.parent(res, obj);
 
-        if (obj.name !== "Rock") return false;
+        if (obj.type !== 'player') return false;
         // make sure it cannot be collected "again"
         this.collidable = false;
         // remove it
@@ -35,7 +41,6 @@ game.GravityEntity = game.PushableEntity.extend({
                 me.sys.gravity *= -1;
             }
             break;
-
         }
     }
 });
