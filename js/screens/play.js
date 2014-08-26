@@ -1,11 +1,26 @@
 game.PlayScreen = me.ScreenObject.extend({
     onLevelLoaded : function(levelName) {
-        // reset the score
-        game.data.score = 0;
-        me.sys.gravity = 0.98; // default value: 0.98 (earth gravity)
 
         game.Rock = me.game.world.getChildByName("Rock")[0];
-        //console.log("onLevelLoaded", me.game.world.getChildByName("Rock").length, this, levelName);
+
+        me.sys.gravity = 0.98; // default value: 0.98 (earth gravity)
+
+        if ('gravity' in me.game.currentLevel) {
+            switch (me.game.currentLevel.gravity) {
+                case 'up':
+                    if (me.sys.gravity > 0) {
+                        me.sys.gravity *= -1;
+                        game.Rock.flipY(true);
+                    }
+                    break;
+                case 'down':
+                    if (me.sys.gravity < 0) {
+                        game.Rock.flipY(false);
+                        me.sys.gravity *= -1;
+                    }
+                    break;
+            }
+        }
     },
 
     drawButtons: function() {
