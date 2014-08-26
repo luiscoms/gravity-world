@@ -56,14 +56,7 @@ game.PushableEntity = me.ObjectEntity.extend({
 
 //         if (collision)
 //             console.log("Collision with", collision.obj.name);
-        if (collision) {
-            // if we collide with the player
-            if (collision.obj.name == "Rock") {
-                if (res.xprop.type == "solid") {
-                    collision.obj.stop();
-                }
-            }
-        } else {
+        if (!collision) {
             this.vel.x = 0;
         }
 
