@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64" backgroundcolor="#6d6d6d">
+ <tileset firstgid="1" name="sand" tilewidth="64" tileheight="64">
+  <image source="../img/map/sand-tiles-64x64.png" width="256" height="320"/>
+ </tileset>
+ <tileset firstgid="21" name="metatiles" tilewidth="64" tileheight="64">
+  <image source="../img/map/metatiles-64x64.png" width="320" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="plataform"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="lslope"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="type" value="rslope"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="ladder"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer name="background" width="15" height="10">
+  <image source="../img/backgrounds/background01-960x640.png"/>
+ </imagelayer>
+ <imagelayer name="foreground" width="15" height="10">
+  <image source="../img/backgrounds/foreground01-960x640.png"/>
+ </imagelayer>
+ <layer name="foreground" width="15" height="10">
+  <data encoding="base64">
+   AAAAAAUAAAAGAAAABwAAAAgAAAARAAAAEgAAABMAAAASAAAAEwAAAAkAAAAKAAAACwAAAAwAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAAAAAAAAAAAAAIAAAADAAAABAAAAAEAAAACAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAMAAAAEAAAAAQAAAAIAAAADAAAABAAAAAEAAAACAAAAAwAAAAQAAAABAAAAAgAAAAMAAAAEAAAA
+  </data>
+ </layer>
+ <layer name="collision" width="15" height="10" visible="0">
+  <data encoding="base64">
+   FQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAA
+  </data>
+ </layer>
+ <objectgroup name="objects" width="15" height="10">
+  <object name="Rock" x="896" y="474" width="64" height="101">
+   <properties>
+    <property name="image" value="player-96x102"/>
+    <property name="spriteheight" value="102"/>
+    <property name="spritewidth" value="96"/>
+   </properties>
+  </object>
+  <object name="Up" x="512" y="512" width="64" height="64"/>
+  <object name="Arrow" x="823" y="96" width="64" height="64">
+   <properties>
+    <property name="to" value="stage-01.10"/>
+   </properties>
+  </object>
+  <object name="Detonator" x="384" y="128" width="64" height="64"/>
+  <object name="Bomb" x="896" y="128" width="64" height="64"/>
+  <object name="Bomb" x="896" y="64" width="64" height="64"/>
+  <object name="Down" x="512" y="128" width="64" height="64"/>
+  <object name="Coin" x="128" y="448" width="64" height="64"/>
+  <object name="Coin" x="192" y="448" width="64" height="64"/>
+  <object name="Bomb" x="64" y="320" width="64" height="64"/>
+  <object name="Bomb" x="64" y="256" width="64" height="64"/>
+  <object name="Bomb" x="64" y="384" width="64" height="64"/>
+  <object name="Bomb" x="128" y="384" width="64" height="64"/>
+  <object name="Bomb" x="128" y="256" width="64" height="64"/>
+  <object name="Bomb" x="128" y="320" width="64" height="64"/>
+  <object name="Bomb" x="320" y="384" width="64" height="64"/>
+  <object name="Bomb" x="320" y="256" width="64" height="64"/>
+  <object name="Bomb" x="320" y="320" width="64" height="64"/>
+  <object name="Bomb" x="192" y="384" width="64" height="64"/>
+  <object name="Bomb" x="256" y="384" width="64" height="64"/>
+  <object name="Bomb" x="192" y="256" width="64" height="64"/>
+  <object name="Bomb" x="256" y="256" width="64" height="64"/>
+  <object name="Bomb" x="192" y="320" width="64" height="64"/>
+  <object name="Bomb" x="256" y="320" width="64" height="64"/>
+  <object name="Up" x="128" y="512" width="64" height="64"/>
+ </objectgroup>
+</map>
