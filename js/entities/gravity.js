@@ -30,13 +30,13 @@ game.GravityEntity = game.PushableEntity.extend({
         switch (this.name) {
         // changing gravity
         case 'up':
-            if (me.sys.gravity > 0 && obj.vel.y === 0) {
+            if (me.sys.gravity > 0) {
                 me.sys.gravity *= -1;
                 obj.flipY(true);
             }
             break;
         case 'down':
-            if (me.sys.gravity < 0 && obj.vel.y === 0) {
+            if (me.sys.gravity < 0) {
                 obj.flipY(false);
                 me.sys.gravity *= -1;
             }
