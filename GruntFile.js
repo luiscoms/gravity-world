@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['lib/melonJS-1.0.2.js', 'lib/plugins/*.js', 'js/game.js', 'js/resources.js','js/entities/pushable.js','js/**/*.js','!js/social.js'],
+        src: ['lib/melonJS-1.0.2.js', 'lib/plugins/*.js', 'js/game.js', 'js/resources.js','js/**/*.js','!js/social.js'],
         dest: 'build/js/app.js'
       }
     },
