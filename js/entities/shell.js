@@ -32,7 +32,7 @@ game.Detonator = game.PushableEntity.extend({
 });
 
 
-game.Bomb = game.PushableEntity.extend({
+game.Bomb = game.Solid.extend({
     init: function(x, y, settings) {
         this.name = "Bomb";
 

@@ -16,15 +16,17 @@ game.PushableEntity = me.ObjectEntity.extend({
         // console.log(this.name, 'collision with', obj.name, res);
         // if we collide with the player
         if (obj.type == 'player') {
-            // this.pos.x += res.x;
-            obj.pos.x -= res.x+1;
-            obj.pos.y -= res.y;
+            if (res.x != 0) {
+                obj.pos.x -= res.x + (res.x < 0 ? 1 : -1);
+            }
             if (res.y == 0) {
                 if (res.x < 0) {
                     this.vel.x -= this.accel.x * me.timer.tick;
                 } else {
                     this.vel.x += this.accel.x * me.timer.tick;
                 }
+            } else {
+                obj.pos.y -= res.y + (res.y > 0 ? 1 : -1);
             }
         } else if (obj.type == 'solid') {
             this.vel.x = 0;
@@ -87,5 +89,35 @@ game.PushableEntity = me.ObjectEntity.extend({
             return true;
         }
         return false;
+    }
+});
+
+/**
+ * Solid Entity
+ */
+game.Solid = me.ObjectEntity.extend({
+    init: function(x, y, settings) {
+        // call the parent constructor
+        this.parent(x, y, settings);
+
+        this.collidable = true;
+        this.type = "solid";
+    },
+
+    update: function(dt) {
+        // check for collision
+        var collision = me.game.world.collide(this);
+    },
+
+    onCollision: function(res, obj) {
+        obj.vel.x = 0;
+        obj.vel.y = 0;
+        obj.pos.x -= res.x;
+        if (res.y != 0) {
+            obj.pos.y -= res.y + (res.y > 0 ? 1 : -1);
+        }
+        // try { // if is the player
+        //     obj.stop();
+        // } catch(e){}
     }
 });
