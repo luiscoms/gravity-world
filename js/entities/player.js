@@ -37,9 +37,11 @@ game.Player = me.ObjectEntity.extend(
     },
 
     walkLeft: function() {
+        try {
         if (!this.renderable.isCurrentAnimation("rock_walk")) {
             this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
         }
+        }catch(e){}
         // flip the sprite on horizontal axis
         this.flipX(false);
         // update the entity velocity
@@ -47,9 +49,11 @@ game.Player = me.ObjectEntity.extend(
     },
 
     walkRight: function() {
+        try {
         if (!this.renderable.isCurrentAnimation("rock_walk")) {
             this.renderable.setCurrentAnimation("rock_walk", "rock_stand");
         }
+        }catch(e){}
         // unflip the sprite
         this.flipX(true);
         // update the entity velocity
