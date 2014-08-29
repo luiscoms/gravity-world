@@ -47,9 +47,31 @@ game.PushableEntity = me.ObjectEntity.extend({
 
     update: function(dt) {
         this.gravity = me.sys.gravity;
-        // update player position
 
+        // check if we fell into a hole
+        if (this.gravity > 0 && this.pos.y >= me.video.getHeight()-this.getBounds().height ||
+            this.gravity < 0 && this.pos.y <= 0) {
+            if (this.gravity > 0) {
+                this.pos.y = me.video.getHeight()-this.getBounds().height;
+            } else {
+                this.pos.y = 0;
+            }
+            this.vel.y = 0;
+            return false;
+        }
+
+        // update player position
         var res = this.updateMovement();
+        if (!this.inViewport ||
+                (this.gravity > 0 && this.pos.y > me.video.getHeight()) ||
+                (this.gravity < 0 && this.pos.y < -this.getBounds().height)) {
+            // if yes reset the game
+            //me.game.world.removeChild(this);
+
+            me.state.change(me.state.MENU);//me.levelDirector.reloadLevel();
+            return true;
+        }
+
         // if (res.yprop.type && res.yprop.type != "solid") console.log("res.yprop.type", res.yprop.type);
         // if (res.xprop.type && res.xprop.type != "solid") console.log("res.xprop.type", res.xprop.type);
 

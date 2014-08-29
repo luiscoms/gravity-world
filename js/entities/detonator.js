@@ -10,7 +10,7 @@ game.Detonator = game.PushableEntity.extend({
 
         // adjust the size setting information to match the sprite size
         // so that the entity object is created with the right size
-        settings.spritewidth = settings.width = 64;
+        settings.spritewidth = settings.width = 61;
         settings.spriteheight = settings.height = 64;
 
         // call the parent constructor
@@ -21,7 +21,7 @@ game.Detonator = game.PushableEntity.extend({
         this.parent(res, obj);
 
         var bombs = me.game.world.getChildByName('bomb');
-        if (obj.type !== 'player' || res.y == 0) return false;
+        if (obj.type !== 'player' || res.y <= 0) return false;
 
         for (var i in bombs) {
             me.game.world.removeChild(bombs[i]);
