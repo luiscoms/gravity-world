@@ -78,5 +78,10 @@
   <object name="Bomb" x="704" y="192" width="64" height="64"/>
   <object name="Bomb" x="128" y="384" width="64" height="64"/>
   <object name="Bomb" x="64" y="384" width="64" height="64"/>
+  <object name="Arrow" x="0" y="64" width="13" height="128">
+   <properties>
+    <property name="to" value="stage-01.01"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

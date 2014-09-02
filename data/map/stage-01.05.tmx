@@ -56,7 +56,7 @@
    </properties>
   </object>
   <object name="Up" x="448" y="320" width="64" height="64"/>
-  <object name="Arrow" x="13" y="96" width="64" height="64">
+  <object name="Arrow" x="0" y="64" width="13" height="128">
    <properties>
     <property name="direction" value="left"/>
     <property name="to" value="stage-01.06"/>

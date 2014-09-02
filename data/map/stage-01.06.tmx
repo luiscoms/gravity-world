@@ -58,7 +58,7 @@
     <property name="spritewidth" value="96"/>
    </properties>
   </object>
-  <object name="Arrow" x="883" y="416" width="64" height="64">
+  <object name="Arrow" x="944" y="384" width="13" height="128">
    <properties>
     <property name="to" value="stage-01.07"/>
    </properties>

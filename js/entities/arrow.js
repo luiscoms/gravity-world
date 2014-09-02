@@ -2,14 +2,14 @@
  * Arrow Entity
  */
 game.Arrow = me.LevelEntity.extend({
-
     init: function(x, y, settings) {
-        settings.image = 'arrow-64x64';
-
+        if (settings.visible) {
+            settings.image = 'arrow-64x64';
+        }
         // call the parent constructor
         this.parent(x, y, settings);
 
-        if ('direction' in settings) {
+        if (settings.visible && 'direction' in settings) {
             switch (settings.direction) {
                 case 'left':
                     this.flipX(true);

@@ -59,7 +59,7 @@
    </properties>
   </object>
   <object name="Up" x="576" y="448" width="64" height="64"/>
-  <object name="Arrow" x="883" y="480" width="64" height="64">
+  <object name="Arrow" x="944" y="448" width="13" height="128">
    <properties>
     <property name="to" value="stage-01.04"/>
    </properties>

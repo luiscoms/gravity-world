@@ -59,6 +59,7 @@
   <object name="Arrow" x="883" y="96" width="64" height="64">
    <properties>
     <property name="to" value="stage-01.02"/>
+    <property name="visible" value="true"/>
    </properties>
   </object>
  </objectgroup>
