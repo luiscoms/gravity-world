@@ -16,7 +16,7 @@ game.resources = [
     {name: "shellA",  type:"image", src: "data/img/blocks/shellA-68x72.png"},
     {name: "bombdet-64x64",  type:"image", src: "data/img/blocks/bombdet-64x64.png"},
     {name: "bombset01-64x60",  type:"image", src: "data/img/blocks/bombset01-64x60.png"},
-    {name: "lock-66x68",  type:"image", src: "data/img/blocks/lock-66x68.png"},
+    {name: "lock",  type:"image", src: "data/img/blocks/lock-64x64.png"},
     {name: "key",  type:"image", src: "data/img/blocks/key-64x48.png"},
 
     // Buttons
