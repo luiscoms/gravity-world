@@ -10,7 +10,8 @@ game.Detonator = game.PushableEntity.extend({
 
         // adjust the size setting information to match the sprite size
         // so that the entity object is created with the right size
-        settings.spritewidth = settings.width = 61;
+        settings.width = 55;
+        settings.spritewidth = 64;
         settings.spriteheight = settings.height = 64;
 
         // call the parent constructor
