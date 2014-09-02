@@ -8,11 +8,14 @@ game.Coin = me.CollectableEntity.extend({
 
         // call the parent constructor
         this.parent(x, y, settings);
+        this.type = 'static-collectable';
     },
 
     // this function is called by the engine, when
     // an object is touched by something (here collected)
-    onCollision: function() {
+    onCollision: function(res, obj) {
+        if (obj.type !== 'player') return false;
+
         // give some score
         game.data.score += 1;
 

@@ -78,9 +78,9 @@ game.PushableEntity = me.ObjectEntity.extend({
         // check for collision
         var collision = me.game.world.collide(this);
 
-//         if (collision)
-//             console.log("Collision with", collision.obj.name);
-        if (!collision) {
+        if (collision)
+            console.log("Collision with", collision.obj.name, collision.obj.type);
+        if (!collision || collision.obj.type == 'static-collectable') {
             this.vel.x = 0;
         }
 
