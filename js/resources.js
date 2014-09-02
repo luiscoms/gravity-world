@@ -14,9 +14,10 @@ game.resources = [
     {name: "up-64x64",  type:"image", src: "data/img/blocks/up-64x64.png"},
     {name: "coin-64x64",  type:"image", src: "data/img/blocks/coin-64x64.png"},
     {name: "shellA",  type:"image", src: "data/img/blocks/shellA-68x72.png"},
-    {name: "lock-66x68",  type:"image", src: "data/img/blocks/lock-66x68.png"},
     {name: "bombdet-64x64",  type:"image", src: "data/img/blocks/bombdet-64x64.png"},
     {name: "bombset01-64x60",  type:"image", src: "data/img/blocks/bombset01-64x60.png"},
+    {name: "lock-66x68",  type:"image", src: "data/img/blocks/lock-66x68.png"},
+    {name: "key",  type:"image", src: "data/img/blocks/key-64x48.png"},
 
     // Buttons
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome-46x46.png"},
@@ -61,7 +62,7 @@ game.resources = [
     {name: "stage-01.08", type: "tmx", src: "data/map/stage-01.08.tmx"},
     {name: "stage-01.09", type: "tmx", src: "data/map/stage-01.09.tmx"},
     {name: "stage-01.10", type: "tmx", src: "data/map/stage-01.10.tmx"},
-    {name: "stage-01.11", type: "tmx", src: "data/map/stage-01.01.tmx"},
+    {name: "stage-01.11", type: "tmx", src: "data/map/stage-01.11.tmx"},
     {name: "stage-01.12", type: "tmx", src: "data/map/stage-01.01.tmx"},
     {name: "stage-01.13", type: "tmx", src: "data/map/stage-01.01.tmx"},
     {name: "stage-01.14", type: "tmx", src: "data/map/stage-01.01.tmx"},

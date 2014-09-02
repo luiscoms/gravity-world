@@ -6,6 +6,7 @@ var game = {
     data : {
         // score
         score : 0,
+        keys : 0,
         levels: [
             { reached: false },//1
             { reached: false },
@@ -74,6 +75,7 @@ var game = {
         me.pool.register("Lock", game.Lock);
         me.pool.register("Detonator", game.Detonator);
         me.pool.register("Bomb", game.Bomb);
+        me.pool.register("Key", game.Key);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.ESC, "esc");

@@ -1,9 +1,7 @@
 /**
  * Lock Entity
  */
-game.Lock = me.ObjectEntity.extend({
-    // extending the init function is not mandatory
-    // unless you need to add some extra initialization
+game.Lock = game.Solid.extend({
     init: function(x, y, settings) {
         // define this here instead of tiled
         settings.image = "lock-66x68";
@@ -15,28 +13,22 @@ game.Lock = me.ObjectEntity.extend({
 
         // call the parent constructor
         this.parent(x, y, settings);
-
-        this.gravity = me.sys.gravity;
-        this.collidable = true;
-        this.setVelocity(5, 15);
-
-        this.name = "Lock";
-        this.type = "solid";
-    },
-
-    update: function(dt) {
-        // check for collision
-        var collision = me.game.world.collide(this);
     },
 
     onCollision: function(res, obj) {
         // console.log(this.name, 'collision with', obj.name);
-        obj.vel.x = 0;
-        obj.vel.y = 0;
-        obj.pos.x -= res.x;
-        obj.pos.y -= res.y;
-        try { // if is the player
-            obj.stop();
-        } catch(e){}
+        if (obj.type == 'player' && game.data.keys > 0) {
+            game.data.keys -= 1;
+            // remove all locks
+            var locks = me.game.world.getChildByName('lock');
+
+            for (var i in locks) {
+                me.game.world.removeChild(locks[i]);
+            }
+            return;
+        }
+
+
+        this.parent(res, obj);
     }
 });
