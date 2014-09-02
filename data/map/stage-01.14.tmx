@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64" backgroundcolor="#6d6d6d">
+ <properties>
+  <property name="gravity" value="up"/>
+ </properties>
+ <tileset firstgid="1" name="sand" tilewidth="64" tileheight="64">
+  <image source="../img/map/sand-tiles-64x64.png" width="256" height="320"/>
+ </tileset>
+ <tileset firstgid="21" name="metatiles" tilewidth="64" tileheight="64">
+  <image source="../img/map/metatiles-64x64.png" width="320" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="plataform"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="lslope"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="type" value="rslope"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="ladder"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer name="background" width="15" height="10">
+  <image source="../img/backgrounds/background01-960x640.png"/>
+ </imagelayer>
+ <imagelayer name="foreground" width="15" height="10">
+  <image source="../img/backgrounds/foreground01-960x640.png"/>
+ </imagelayer>
+ <layer name="foreground" width="15" height="10">
+  <data encoding="base64">
+   AAAAAAUAAAAGAAAABwAAAAgAAAARAAAAEgAAABMAAAATAAAAEwAAAAkAAAAKAAAACwAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABQAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAMAAAAEAAAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAFAAAAAAAAAAAAAAAAQAAAAIAAAADAAAABAAAAAEAAAACAAAAAwAAAAQAAAABAAAAAAAAAAAAAAATAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAgAAAAMAAAAEAAAAAQAAAAIAAAADAAAABAAAAAEAAAACAAAAAwAAAAQAAAABAAAAAgAAAAMAAAAEAAAA
+  </data>
+ </layer>
+ <layer name="collision" width="15" height="10">
+  <data encoding="base64">
+   FQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAABUAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAFQAAABUAAAAAAAAAAAAAAAAAAAAVAAAAFQAAABUAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAA
+  </data>
+ </layer>
+ <objectgroup name="objects" width="15" height="10">
+  <object name="Rock" x="896" y="64" width="58" height="101">
+   <properties>
+    <property name="image" value="player-96x102"/>
+    <property name="spriteheight" value="102"/>
+    <property name="spritewidth" value="96"/>
+   </properties>
+  </object>
+  <object name="Coin" x="448" y="448" width="64" height="64"/>
+  <object name="Coin" x="192" y="448" width="64" height="64"/>
+  <object name="Up" x="256" y="192" width="64" height="64"/>
+  <object name="Coin" x="576" y="448" width="64" height="64"/>
+  <object name="Coin" x="320" y="448" width="64" height="64"/>
+  <object name="Down" x="768" y="64" width="64" height="64"/>
+  <object name="Coin" x="704" y="448" width="64" height="64"/>
+  <object name="Key" x="390" y="64" width="64" height="64"/>
+  <object name="Down" x="320" y="192" width="64" height="64"/>
+  <object name="Down" x="326" y="64" width="64" height="64"/>
+  <object name="Lock" x="64" y="192" width="64" height="64"/>
+  <object name="Lock" x="128" y="192" width="64" height="64"/>
+  <object name="Up" x="320" y="512" width="64" height="64"/>
+  <object name="Shell" x="704" y="64" width="64" height="64"/>
+ </objectgroup>
+</map>
