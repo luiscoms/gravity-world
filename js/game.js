@@ -26,7 +26,6 @@ var game = {
         ]
     },
 
-
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
@@ -68,6 +67,7 @@ var game = {
         // register our entities in the object pool
         me.pool.register("Arrow", game.Arrow);
         me.pool.register("Rock", game.Player);
+        me.pool.register("Mage", game.Mage);
         me.pool.register("Coin", game.Coin);
         me.pool.register("Down", game.GravityEntity);
         me.pool.register("Up", game.GravityEntity);

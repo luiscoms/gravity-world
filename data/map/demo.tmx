@@ -73,5 +73,7 @@
   <object name="Lock" x="576" y="320" width="64" height="64"/>
   <object name="Detonator" x="192" y="128" width="64" height="64"/>
   <object name="Bomb" x="256" y="384" width="64" height="64"/>
+  <object name="Key" x="448" y="320" width="64" height="64"/>
+  <object name="Mage" x="769" y="468" width="64" height="101"/>
  </objectgroup>
 </map>

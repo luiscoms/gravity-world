@@ -7,6 +7,7 @@ game.resources = [
     {name: "player-96x102",  type:"image", src: "data/img/player/player-96x102.png"},
     {name: "sand-tiles-64x64",  type:"image", src: "data/img/map/sand-tiles-64x64.png"},
     {name: "metatiles-64x64",  type:"image", src: "data/img/map/metatiles-64x64.png"},
+    {name: "mage", type: "image", src: "data/img/player/mage.png"},
 
     // Blocks
     {name: "arrow-64x64",  type:"image", src: "data/img/blocks/arrow-64x64.png"},
@@ -18,6 +19,10 @@ game.resources = [
     {name: "bombset01-64x60",  type:"image", src: "data/img/blocks/bombset01-64x60.png"},
     {name: "lock",  type:"image", src: "data/img/blocks/lock-64x64.png"},
     {name: "key",  type:"image", src: "data/img/blocks/key-64x48.png"},
+
+    // Dialog
+    {name: 'speak-arrow', type: 'image', src: 'data/img/buttons/speak-arrow.png'},
+    {name: 'speak01', type: 'image', src: 'data/img/buttons/speak01.png'},
 
     // Buttons
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome-46x46.png"},

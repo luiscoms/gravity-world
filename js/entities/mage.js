@@ -1,5 +1,6 @@
-
-
+/**
+ * Mage Entity
+ */
 game.Mage = me.ObjectContainer.extend({
     init: function(x, y, settings) {
         // call the constructor
@@ -14,7 +15,7 @@ game.Mage = me.ObjectContainer.extend({
         var MageNPC = me.ObjectEntity.extend({
             init: function(x, y) {
                 settings = {};
-                settings.image = 'm00';
+                settings.image = 'mage';
                 settings.spritewidth = settings.width = 75;
                 settings.spriteheight = settings.height = 95;
 
@@ -39,13 +40,14 @@ game.Mage = me.ObjectContainer.extend({
                 this.flipX(true);
                 // define the object z order
                 this.z = settings.z;
+                this.name = 'SpeakArrow';
             },
             onClick: function() {
                 console.log('clicked!');
             }
         });
 
-        var Ballom = me.GUI_Object.extend({
+        var Balloon = me.GUI_Object.extend({
             init: function (x, y) {
                 settings = {};
                 settings.image = 'speak01';
@@ -60,6 +62,7 @@ game.Mage = me.ObjectContainer.extend({
                     y,
                     settings);
                 this.flipX(true);
+                this.name = 'SpeakBalloon';
 
                 var Speak = me.Renderable.extend({
                     init: function(x, y) {
@@ -69,6 +72,7 @@ game.Mage = me.ObjectContainer.extend({
 
                         // create a font
                         this.font = new me.Font("Marker-Felt, Arial, sans-serif", 40, "black");
+                        this.name = 'SpeakText';
 
                         // make sure we use screen coordinates
                         // this.floating = true;
@@ -83,12 +87,16 @@ game.Mage = me.ObjectContainer.extend({
                 me.game.world.addChild(new Speak(x+80, y+40), 10);
             },
             onClick: function() {
-                console.log('clicked!');
+                me.game.world.removeChild(me.game.world.getChildByName('MageContainer')[0]);
+                me.game.world.removeChild(me.game.world.getChildByName('SpeakBalloon')[0]);
+                me.game.world.removeChild(me.game.world.getChildByName('SpeakText')[0]);
+                me.game.world.removeChild(me.game.world.getChildByName('SpeakArrow')[0]);
+                me.game.world.removeChild(me.game.world.getChildByName('MageNPC')[0]);
             }
         });
         me.game.world.addChild(new MageNPC(x, y), 10);
         me.game.world.addChild(new Arrow(x, y), 10);
-        me.game.world.addChild(new Ballom(x, y), 9);
+        me.game.world.addChild(new Balloon(x, y), 9);
 
     }
 });
