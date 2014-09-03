@@ -24,8 +24,22 @@ game.HUD.Container = me.ObjectContainer.extend({
 
         // add our child coins object at the right-top position
         this.addChild(
-            new game.HUD.CoinsCount({
-                "opacity" : 0.8,
+            new game.HUD.ItemCount({
+                'image' : 'key',
+                'counter' : 'keys',
+                'opacity' : 0.8,
+                x: -330,
+                y: 10
+            }),
+            2 // z-index
+        );
+
+        // add our child coins object at the right-top position
+        this.addChild(
+            new game.HUD.ItemCount({
+                'image' : 'bcoin',
+                'counter' : 'score',
+                'opacity' : 0.8,
                 x: -145,
                 y: 10
             }),
@@ -157,7 +171,7 @@ game.HUD.Joystick = me.ObjectContainer.extend({
     }
 });
 
-game.HUD.CoinsCount = me.ObjectContainer.extend({
+game.HUD.ItemCount = me.ObjectContainer.extend({
     init: function (settings) {
         // call the parent constructor
         this.parent();
@@ -182,7 +196,8 @@ game.HUD.CoinsCount = me.ObjectContainer.extend({
             }
         });
 
-        var CoinsNum = me.Renderable.extend({
+        var count = settings.counter;
+        var Counter = me.Renderable.extend({
             init: function(x, y) {
                 // call the parent constructor
                 // (size does not matter here)
@@ -192,37 +207,42 @@ game.HUD.CoinsCount = me.ObjectContainer.extend({
                 this.font = new me.Font("Marker-Felt, Arial, sans-serif", 20, "black", "right");
 
                 // local copy of the global score
-                this.score = -1;
+                this.count = -1;
 
                 // make sure we use screen coordinates
                 this.floating = true;
             },
-            update : function () {
+            update: function () {
                 // we don't do anything fancy here, so just
                 // return true if the score has been updated
-                if (this.score !== game.data.score) {
-                    this.score = game.data.score;
+                if (this.count !== game.data[count]) {
+                    this.count = game.data[count];
                     return true;
                 }
                 return false;
             },
-            draw : function (context) {
-                this.font.draw(context, game.data.score, this.pos.x, this.pos.y);
+            draw: function (context) {
+                this.font.draw(context, this.count, this.pos.x, this.pos.y);
             }
         });
 
-        // Add the coin image
         this.addChild(
-            new ImageButton(x-42, y+5, { "image" : 'bcoin', "opacity" : settings.opacity }), z
+            new ImageButton(
+                x-me.loader.getImage(settings.image).width,
+                y+5,
+                {
+                    'image': settings.image,
+                    'opacity': settings.opacity
+                }),
+            z
         );
 
-        // Add the hold coins
         this.addChild(
-            new ImageButton(x, y, { "image" : 'acoin', "opacity" : settings.opacity }), z
+            new ImageButton(x, y, { 'image' : 'acoin', 'opacity' : settings.opacity }), z
         );
 
         this.addChild(
-            new CoinsNum(x+110, y+19), z+1
+            new Counter(x+110, y+19), z+1
         );
 
         return true;
