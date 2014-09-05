@@ -12,6 +12,8 @@ game.Mage = me.ObjectContainer.extend({
         // persistent across level change
         this.isPersistent = false;
 
+        var phrase = (settings.phrase || '!').replace(/\{n\}/g, '\n');
+
         var MageNPC = me.ObjectEntity.extend({
             init: function(x, y) {
                 settings = {};
@@ -24,6 +26,14 @@ game.Mage = me.ObjectContainer.extend({
                 this.name = 'MageNPC';
             }
         });
+
+        var hideMage = function() {
+            me.game.world.removeChild(me.game.world.getChildByName('MageContainer')[0]);
+            me.game.world.removeChild(me.game.world.getChildByName('SpeakBalloon')[0]);
+            me.game.world.removeChild(me.game.world.getChildByName('SpeakText')[0]);
+            me.game.world.removeChild(me.game.world.getChildByName('SpeakArrow')[0]);
+            me.game.world.removeChild(me.game.world.getChildByName('MageNPC')[0]);
+        }
 
         var Arrow = me.GUI_Object.extend({
             init: function (x, y) {
@@ -42,9 +52,7 @@ game.Mage = me.ObjectContainer.extend({
                 this.z = settings.z;
                 this.name = 'SpeakArrow';
             },
-            onClick: function() {
-                console.log('clicked!');
-            }
+            onClick: hideMage
         });
 
         var Balloon = me.GUI_Object.extend({
@@ -71,7 +79,7 @@ game.Mage = me.ObjectContainer.extend({
                         this.parent(new me.Vector2d(x, y), 10, 10);
 
                         // create a font
-                        this.font = new me.Font("Marker-Felt, Arial, sans-serif", 40, "black");
+                        this.font = new me.Font("Marker-Felt, Arial, sans-serif", 40, 'black', 'center');
                         this.name = 'SpeakText';
 
                         // make sure we use screen coordinates
@@ -80,19 +88,14 @@ game.Mage = me.ObjectContainer.extend({
                     // update: function () {
                     // },
                     draw: function (context) {
-                        this.font.draw(context, 'It is Dangerous to go alone!\n Take these Gravity Balls\n to change the gravity!', this.pos.x, this.pos.y);
+                        this.font.draw(context, phrase, this.pos.x, this.pos.y);
                     }
                 });
-                console.log(this.z)
-                me.game.world.addChild(new Speak(x+80, y+40), 10);
+                x += me.loader.getImage(settings.image).width/2;
+                y += 40;
+                me.game.world.addChild(new Speak(x, y), 10);
             },
-            onClick: function() {
-                me.game.world.removeChild(me.game.world.getChildByName('MageContainer')[0]);
-                me.game.world.removeChild(me.game.world.getChildByName('SpeakBalloon')[0]);
-                me.game.world.removeChild(me.game.world.getChildByName('SpeakText')[0]);
-                me.game.world.removeChild(me.game.world.getChildByName('SpeakArrow')[0]);
-                me.game.world.removeChild(me.game.world.getChildByName('MageNPC')[0]);
-            }
+            onClick: hideMage
         });
         me.game.world.addChild(new MageNPC(x, y), 10);
         me.game.world.addChild(new Arrow(x, y), 10);

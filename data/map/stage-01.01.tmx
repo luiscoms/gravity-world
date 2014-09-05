@@ -62,5 +62,10 @@
     <property name="visible" value="true"/>
    </properties>
   </object>
+  <object name="Mage" x="768" y="486" width="64" height="101">
+   <properties>
+    <property name="phrase" value="It's Dangerous to go alone!{n} Take these Gravity Balls{n}to change the gravity!"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

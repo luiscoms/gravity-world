@@ -72,5 +72,10 @@
   <object name="Coin" x="640" y="128" width="64" height="64"/>
   <object name="Coin" x="128" y="320" width="64" height="64"/>
   <object name="Coin" x="256" y="320" width="64" height="64"/>
+  <object name="Mage" x="768" y="486" width="64" height="101">
+   <properties>
+    <property name="phrase" value="Remember! If you got{n}stuck click in restart{n}button to try again!!!"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
