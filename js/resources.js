@@ -1,7 +1,7 @@
 game.resources = [
     {name: "title",  type:"image", src: "data/img/gui/title.png"},
-    {name: "background01-960x640",  type:"image", src: "data/img/backgrounds/background01-960x640.png"},
-    {name: "foreground01-960x640",  type:"image", src: "data/img/backgrounds/foreground01-960x640.png"},
+    {name: "background01",  type:"image", src: "data/img/backgrounds/background01-960x640.png"},
+    {name: "foreground01",  type:"image", src: "data/img/backgrounds/foreground01-960x640.png"},
 
     // Objects
     {name: "player-96x102",  type:"image", src: "data/img/player/player-96x102.png"},

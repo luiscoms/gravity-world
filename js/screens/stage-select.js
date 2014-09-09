@@ -7,13 +7,13 @@ game.StageSelectScreen = me.ScreenObject.extend({
     onResetEvent: function() {
         // Load title background
         me.game.world.addChild(
-            new me.ImageLayer("background01-960x640", 0, 0, "background01-960x640"),
+            new me.ImageLayer('background', 0, 0, 'background01'),
             0 // z-index
         );
 
         // Load title foreground
         me.game.world.addChild(
-            new me.ImageLayer("foreground01-960x640", 0, 0, "foreground01-960x640"),
+            new me.ImageLayer('foreground', 0, 0, 'foreground01'),
             1 // z-index
         );
 

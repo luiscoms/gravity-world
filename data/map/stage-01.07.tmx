@@ -32,10 +32,10 @@
   </tile>
  </tileset>
  <imagelayer name="background" width="15" height="10">
-  <image source="../img/backgrounds/background01-960x640.png"/>
+  <image source="background01"/>
  </imagelayer>
  <imagelayer name="foreground" width="15" height="10">
-  <image source="../img/backgrounds/foreground01-960x640.png"/>
+  <image source="foreground01"/>
  </imagelayer>
  <layer name="foreground" width="15" height="10">
   <data encoding="base64">
