@@ -26,10 +26,14 @@ game.resources = [
 
     // Buttons
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome-46x46.png"},
+    {name: "agear",  type:"image", src: "data/img/buttons/agear-49x49.png"},
     {name: "alock",  type:"image", src: "data/img/buttons/alock-44x55.png"},
+    {name: "asoundon",  type:"image", src: "data/img/buttons/asoundon-55x51.png"},
+    {name: "asoundoff",  type:"image", src: "data/img/buttons/asoundoff-38x51.png"},
     {name: "acoin",  type:"image", src: "data/img/buttons/acoin-135x67.png"},
     {name: "bcoin",  type:"image", src: "data/img/blocks/coin-41x50.png"},
     {name: "areload",  type:"image", src: "data/img/buttons/areload-53x53.png"},
+    {name: "bclose",  type:"image", src: "data/img/buttons/bclose-50x50.png"},
     {name: "bt01-84x72",  type:"image", src: "data/img/buttons/bt01-84x72.png"},
     {name: "bt02-84x72",  type:"image", src: "data/img/buttons/bt02-84x72.png"},
     {name: "bback",  type:"image", src: "data/img/buttons/bback.png"},

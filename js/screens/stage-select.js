@@ -40,7 +40,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
         me.game.world.addChild(
             new game.HUD.GUI_Button({
                 "image" : "bt01-84x72",
-                "subimage" : 'ahome',
+                "subimage" : 'agear',
                 'sidemenu' : this.SIDEMENU,
                 x: 10,
                 y: 10,
