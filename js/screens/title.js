@@ -1,6 +1,8 @@
 /*global me: true, game: true */
 game.TitleScreen = me.ScreenObject.extend({
     onResetEvent: function() {
+        me.audio.playTrack('custom');
+
         // me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
         // me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
         // this.handler = me.event.subscribe(me.event.KEYDOWN, function (action) {
@@ -66,6 +68,7 @@ game.TitleScreen = me.ScreenObject.extend({
     },
 
     onDestroyEvent : function () {
+        me.audio.stopTrack();
         me.input.unbindKey(me.input.KEY.ENTER);
         // me.input.unbindPointer(me.input.mouse.LEFT);
         me.event.unsubscribe(this.handler);

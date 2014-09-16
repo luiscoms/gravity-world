@@ -272,9 +272,9 @@ game.HUD.GUI_Button = me.ObjectContainer.extend({
 
                 this.setOpacity(settings.opacity);
             },
-            onClick : function() {
+            onClick : function(event) {
                 if (typeof settings.onClick === 'function') {
-                    settings.onClick(settings);
+                    settings.onClick(event, settings);
                 }
             }
         });

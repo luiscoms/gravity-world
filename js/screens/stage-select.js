@@ -2,9 +2,28 @@ function strPad(input, length, string) {
     string = string || '0'; input = input + '';
     return input.length >= length ? input : new Array(length - input.length + 1).join(string) + input;
 }
+
+
+
 /*global me: true, game: true */
 game.StageSelectScreen = me.ScreenObject.extend({
+    isLocked: function(level, levels) {
+        if (level == 1) {
+            return false;
+        }
+        if (levels[level].reached) {
+            return true;
+        } else if (levels[level - 1] && levels[level].reached) {
+            return true;
+        }
+        return false;
+    },
+
     onResetEvent: function() {
+        // add SIDEMENU to the game world
+        this.SIDEMENU = new game.SideMenu.Container();
+        me.game.world.addChild(this.SIDEMENU);
+
         // Load title background
         me.game.world.addChild(
             new me.ImageLayer('background', 0, 0, 'background01'),
@@ -21,12 +40,14 @@ game.StageSelectScreen = me.ScreenObject.extend({
         me.game.world.addChild(
             new game.HUD.GUI_Button({
                 "image" : "bt01-84x72",
-                "subimage" : "ahome",
+                "subimage" : 'ahome',
+                'sidemenu' : this.SIDEMENU,
                 x: 10,
                 y: 10,
-                "onClick" : function () {
-                    me.state.change(me.state.READY);
-                    return true;
+                "onClick" : function (event, settings) {
+                    // me.state.change(me.state.READY);
+                    settings.sidemenu.show();
+                    return false;
                 }
             }),
             2 // z-index
@@ -66,7 +87,8 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "stage" : num,
                     x: x1 - x2 * 2,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
+                            console.log('clicked 1!');
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -92,7 +114,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "stage" : num,
                     x: x1 - x2,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -118,7 +140,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "stage" : num,
                     centerX: true,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -144,7 +166,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "stage" : num,
                     x: x1 + x2,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -170,7 +192,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "stage" : num,
                     x: x1 + x2 * 2,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -194,7 +216,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     "locked" : false,
                     centerX: true,
                     y: y,
-                    "onClick" : function (settings) {
+                    "onClick" : function (event, settings) {
                         me.state.change(me.state.PLAY); //load demo
                         return true;
                     }
@@ -202,5 +224,10 @@ game.StageSelectScreen = me.ScreenObject.extend({
                 2 // z-index
             );
         }
+    },
+
+    onDestroyEvent: function() {
+        // remove the SIDEMENU from the game world
+        me.game.world.removeChild(this.SIDEMENU);
     }
 });

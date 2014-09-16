@@ -36,6 +36,7 @@ game.resources = [
     {name: "bfront",  type:"image", src: "data/img/buttons/bfront.png"},
     {name: "bt01big",  type:"image", src: "data/img/buttons/bt01big-255x84.png"},
     {name: "aplaytext",  type:"image", src: "data/img/buttons/aplaytext-106x56.png"},
+    {name: "menubg",  type:"image", src: "raw/buttons/hd/menubg.png"},
 
     // Numbers
     {name: "a00",  type:"image", src: "data/img/buttons/a00-28x46.png"},
@@ -72,4 +73,7 @@ game.resources = [
     {name: "stage-01.13", type: "tmx", src: "data/map/stage-01.13.tmx"},
     {name: "stage-01.14", type: "tmx", src: "data/map/stage-01.14.tmx"},
     {name: "stage-01.15", type: "tmx", src: "data/map/stage-01.15.tmx"},
+
+    //Background music.
+    {name: 'custom', type: 'audio', src: 'data/bgm/'},
 ];
