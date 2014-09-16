@@ -36,7 +36,8 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'build/index.html': ['index.html']
+          'build/index.html': ['index.html'],
+          'build/validate/index.html': ['validate/index.html']
         }
       }
     },
