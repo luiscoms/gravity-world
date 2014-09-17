@@ -55,7 +55,7 @@ game.SideMenu.Container = me.ObjectContainer.extend({
                     5 // z-index
                 );
 
-                y = 180;
+                y = 220;
                 // home
                 this.addChild(
                     new game.HUD.GUI_Button({
