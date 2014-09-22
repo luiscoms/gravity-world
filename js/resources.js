@@ -40,7 +40,7 @@ game.resources = [
     {name: "bfront",  type:"image", src: "data/img/buttons/bfront.png"},
     {name: "bt01big",  type:"image", src: "data/img/buttons/bt01big-255x84.png"},
     {name: "aplaytext",  type:"image", src: "data/img/buttons/aplaytext-106x56.png"},
-    {name: "menubg",  type:"image", src: "raw/buttons/hd/menubg.png"},
+    {name: "menubg",  type:"image", src: "data/img/buttons/menubg-224x640.png"},
 
     // Numbers
     {name: "a00",  type:"image", src: "data/img/buttons/a00-28x46.png"},
