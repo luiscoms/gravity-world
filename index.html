@@ -10,6 +10,7 @@
 
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- build:js:xdk intelxdk.js --><!-- /build -->
     </head>
     <body>
         <!-- build:include analytics.html --><!-- /build -->
@@ -73,6 +74,12 @@
                     });
                 }
             });
+            <!-- build:template:xdk
+            /* Intel native bridge is available */
+            document.addEventListener('intel.xdk.device.ready', function() {
+                intel.xdk.device.hideSplashScreen();
+            }, false);
+            /build -->
         </script>
     </body>
 </html>

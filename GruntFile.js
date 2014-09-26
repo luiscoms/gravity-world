@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       build: ["build"],
+      xdk: ['xdk'],
       dist: ["dist"],
       doc: ["doc"],
     },
@@ -13,7 +14,7 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      dist: {
+      build: {
         files: [{
           src: 'css/index.css',
           dest: 'build/css/index.css'
@@ -24,12 +25,22 @@ module.exports = function(grunt) {
           src: 'css/**/*',
           dest: 'build/'
         }]
+      },
+      xdk: {
+        expand: true,
+        cwd: './build/',
+        src: '**',
+        dest: 'xdk/',
+        // filter: 'isFile',
       }
     },
     processhtml: {
-      dist: {
+      options: {
+        strip: true,
+        // process: true,
+      },
+      build: {
         options: {
-          process: true,
           data: {
             title: 'My app',
             message: 'This is production distribution'
@@ -39,6 +50,14 @@ module.exports = function(grunt) {
           'build/index.html': ['index.html'],
           'build/validate/index.html': ['validate/index.html']
         }
+      },
+      xdk: {
+        options: {
+          strip: true,
+        },
+        files: {
+          'xdk/index.html': ['index.html'],
+        }
       }
     },
     uglify: {
@@ -46,7 +65,7 @@ module.exports = function(grunt) {
         report: 'min',
         preserveComments: 'some'
       },
-      dist: {
+      build: {
         files: {
           'build/js/app.min.js': [
             'build/js/app.js'
@@ -72,9 +91,9 @@ module.exports = function(grunt) {
         }
     },
     notify: {
-      buid: {
+      build: {
         options: {
-          message: 'Buid completed'
+          message: 'Build completed'
         }
       }
     }
@@ -88,5 +107,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.registerTask('default', ['clean', 'concat', 'uglify', 'copy', 'processhtml', 'notify:buid']);
+  grunt.registerTask('xdk', ['build', 'copy:xdk', 'processhtml:xdk']);
+  grunt.registerTask('build', ['clean', 'concat', 'uglify', 'copy:build', 'processhtml:build', 'notify:build']);
+  grunt.registerTask('default', ['build']);
 }
