@@ -47,6 +47,7 @@
         <script type="text/javascript" src="js/screens/title.js"></script>
         <script type="text/javascript" src="js/screens/stage-select.js"></script>
         <script type="text/javascript" src="js/screens/play.js"></script>
+        <script type="text/javascript" src="js/screens/about.js"></script>
         <!-- /build -->
 
         <!-- Bootstrap & Mobile optimization tricks -->
@@ -74,12 +75,14 @@
                     });
                 }
             });
+        </script>
             <!-- build:template:xdk
+        <script type="text/javascript">
             /* Intel native bridge is available */
             document.addEventListener('intel.xdk.device.ready', function() {
                 intel.xdk.device.hideSplashScreen();
             }, false);
-            /build -->
         </script>
+            /build -->
     </body>
 </html>

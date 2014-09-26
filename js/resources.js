@@ -1,5 +1,6 @@
 game.resources = [
     {name: "title",  type:"image", src: "data/img/gui/title.png"},
+    {name: 'background-hello-world',  type: 'image', src: 'data/img/backgrounds/background-hello-world-960x640.png'},
     {name: "background01",  type:"image", src: "data/img/backgrounds/background01-960x640.png"},
     {name: "foreground01",  type:"image", src: "data/img/backgrounds/foreground01-960x640.png"},
 
@@ -28,6 +29,7 @@ game.resources = [
     {name: "ahome",  type:"image", src: "data/img/buttons/ahome-46x46.png"},
     {name: "agear",  type:"image", src: "data/img/buttons/agear-49x49.png"},
     {name: "alock",  type:"image", src: "data/img/buttons/alock-44x55.png"},
+    {name: 'aquestion',  type: 'image', src: 'data/img/buttons/aquestion-32x41.png'},
     {name: "asoundon",  type:"image", src: "data/img/buttons/asoundon-55x51.png"},
     {name: "asoundoff",  type:"image", src: "data/img/buttons/asoundoff-38x51.png"},
     {name: "acoin",  type:"image", src: "data/img/buttons/acoin-135x67.png"},
@@ -41,6 +43,9 @@ game.resources = [
     {name: "bt01big",  type:"image", src: "data/img/buttons/bt01big-255x84.png"},
     {name: "aplaytext",  type:"image", src: "data/img/buttons/aplaytext-106x56.png"},
     {name: "menubg",  type:"image", src: "data/img/buttons/menubg-224x640.png"},
+
+    // Gui
+    {name: 'about-pannel',  type: 'image', src: 'data/img/buttons/about-pannel-960x640.png'},
 
     // Numbers
     {name: "a00",  type:"image", src: "data/img/buttons/a00-28x46.png"},

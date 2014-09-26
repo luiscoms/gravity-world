@@ -1,6 +1,7 @@
 /*global me: true, game: true */
 game.TitleScreen = me.ScreenObject.extend({
     onResetEvent: function() {
+        me.audio.stopTrack();
         me.audio.playTrack('custom');
 
         // me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
@@ -54,7 +55,7 @@ game.TitleScreen = me.ScreenObject.extend({
             if (action === "enter") {
                 // play something on tap / enter
                 // this will unlock audio on mobile devices
-                me.audio.play("cling");
+                // me.audio.play("cling");
                 me.state.change(me.state.MENU);
             }
         });
@@ -68,7 +69,7 @@ game.TitleScreen = me.ScreenObject.extend({
     },
 
     onDestroyEvent : function () {
-        me.audio.stopTrack();
+        // me.audio.stopTrack();
         me.input.unbindKey(me.input.KEY.ENTER);
         // me.input.unbindPointer(me.input.mouse.LEFT);
         me.event.unsubscribe(this.handler);

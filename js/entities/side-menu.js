@@ -45,7 +45,6 @@ game.SideMenu.Container = me.ObjectContainer.extend({
                         x: 100,
                         y: 10,
                         "onClick" : function (event, settings) {
-                            console.log('clicked!');
                             event.preventDefault();
                             event.stopPropagation();
                             self.hide();
@@ -64,10 +63,25 @@ game.SideMenu.Container = me.ObjectContainer.extend({
                         x: 50,
                         y: y,
                         'onClick' : function (event, settings) {
-                            console.log('clicked ahome!');
                             event.preventDefault();
                             event.stopPropagation();
                             me.state.change(me.state.READY);
+                            return false;
+                        }
+                    }),
+                    5 // z-index
+                );
+
+                y += 90;
+                // sound
+                this.addChild(
+                    new game.HUD.GUI_Button({
+                        'image' : 'bt01-84x72',
+                        'subimage' : 'aquestion',
+                        x: 50,
+                        y: y,
+                        'onClick' : function (event, settings) {
+                            me.state.change(me.state.CREDITS);
                             return false;
                         }
                     }),

@@ -42,7 +42,7 @@ var game = {
         }
 
         // Initialize the audio.
-        me.audio.init("mp3,ogg");
+        me.audio.init('ogg,mp3');
 
         // Set a callback to run when loading is complete.
         me.loader.onload = this.loaded.bind(this);
@@ -60,6 +60,7 @@ var game = {
         me.state.set(me.state.MENU, new game.StageSelectScreen());
         me.state.set(me.state.READY, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(me.state.CREDITS, new game.AboutScreen());
 
         // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
