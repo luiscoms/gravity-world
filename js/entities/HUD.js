@@ -271,17 +271,18 @@ game.HUD.GUI_Button = me.ObjectContainer.extend({
                 this.parent(x, y, settings);
 
                 this.setOpacity(settings.opacity);
+                this.settings = settings;
             },
             onClick : function(event) {
-                if (typeof settings.onClick === 'function') {
-                    settings.onClick(event, settings);
+                if (typeof this.settings.onClick === 'function') {
+                    this.settings.onClick(event, settings);
                 }
             }
         });
 
         // Add a button
         this.addChild(
-            new ImageButton(x, y, { "image" : settings.image, "opacity" : settings.opacity }), z
+            new ImageButton(x, y, { "image" : settings.image, "opacity" : settings.opacity, 'onClick': settings.onClick }), z
         );
 
         if (settings.subimage) {
