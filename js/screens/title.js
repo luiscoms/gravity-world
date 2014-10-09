@@ -1,8 +1,10 @@
 /*global me: true, game: true */
 game.TitleScreen = me.ScreenObject.extend({
     onResetEvent: function() {
-        me.audio.stopTrack();
-        me.audio.playTrack('custom');
+        if (me.save.sound) {
+            me.audio.stopTrack();
+            me.audio.playTrack('custom');
+        }
 
         // me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
         // me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);

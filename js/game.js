@@ -5,6 +5,7 @@ var game = {
     // an object where to store game information
     data : {
         // score
+        sound : true,
         score : 0,
         keys : 0,
         levels: [
@@ -26,6 +27,21 @@ var game = {
         ]
     },
 
+    stageLocked: function(stage, levels) {
+        if (stage <= 1) {
+            return false;
+        }
+        if (levels[stage - 1] && !levels[stage - 1].reached) {
+            return true;
+        }
+        return false;
+    },
+
+    reachStage: function(stage) {
+        game.data.levels[stage - 1].reached = true;
+        me.save.levels = game.data.levels;
+    },
+
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
@@ -33,6 +49,10 @@ var game = {
             window.alert("Your browser does not support HTML5 canvas.");
             return;
         }
+
+        //initialize saved data
+        me.save.add(this.data);
+        // this.data = me.save;
 
         // add "#debug" to the URL to enable the debug Panel
         if (document.location.hash === "#debug") {
@@ -87,5 +107,3 @@ var game = {
         me.state.change(me.state.READY);
     }
 };
-
-

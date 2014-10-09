@@ -7,17 +7,6 @@ function strPad(input, length, string) {
 
 /*global me: true, game: true */
 game.StageSelectScreen = me.ScreenObject.extend({
-    isLocked: function(level, levels) {
-        if (level == 1) {
-            return false;
-        }
-        if (levels[level].reached) {
-            return true;
-        } else if (levels[level - 1] && levels[level].reached) {
-            return true;
-        }
-        return false;
-    },
 
     onResetEvent: function() {
         // add SIDEMENU to the game world
@@ -70,7 +59,8 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     num = 11;
                 break;
             }
-            locked = num !== 1 && !game.data.levels[num-1].reached;
+
+            locked = game.stageLocked(num, me.save.levels);
             subimage = "a" + strPad(num, 2, 0);
             if (locked) {
                 subimage = "alock";
@@ -88,7 +78,6 @@ game.StageSelectScreen = me.ScreenObject.extend({
                     x: x1 - x2 * 2,
                     y: y,
                     "onClick" : function (event, settings) {
-                            console.log('clicked 1!');
                         if (!settings.locked) {
                             me.state.change(me.state.PLAY, { 'world': settings.world, 'stage': settings.stage });
                         }
@@ -99,7 +88,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
             );
             num++;
 
-            locked = !game.data.levels[num-1].reached;
+            locked = game.stageLocked(num, me.save.levels);
             subimage = "a" + strPad(num, 2, 0);
             if (locked) {
                 subimage = "alock";
@@ -125,7 +114,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
             );
             num++;
 
-            locked = !game.data.levels[num-1].reached;
+            locked = game.stageLocked(num, me.save.levels);
             subimage = "a" + strPad(num, 2, 0);
             if (locked) {
                 subimage = "alock";
@@ -151,7 +140,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
             );
             num++;
 
-            locked = !game.data.levels[num-1].reached;
+            locked = game.stageLocked(num, me.save.levels);
             subimage = "a" + strPad(num, 2, 0);
             if (locked) {
                 subimage = "alock";
@@ -177,7 +166,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
             );
             num++;
 
-            locked = !game.data.levels[num-1].reached;
+            locked = game.stageLocked(num, me.save.levels);
             subimage = "a" + strPad(num, 2, 0);
             if (locked) {
                 subimage = "alock";

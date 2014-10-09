@@ -73,7 +73,7 @@ game.SideMenu.Container = me.ObjectContainer.extend({
                 );
 
                 y += 90;
-                // sound
+                // credits
                 this.addChild(
                     new game.HUD.GUI_Button({
                         'image' : 'bt01-84x72',
@@ -97,6 +97,12 @@ game.SideMenu.Container = me.ObjectContainer.extend({
                         x: 50,
                         y: y,
                         'onClick' : function (event, settings) {
+                            me.save.sound = !me.save.sound;
+                            if (me.save.sound) {
+                                me.audio.playTrack('custom');
+                            } else {
+                                me.audio.stopTrack();
+                            }
                             return false;
                         }
                     }),

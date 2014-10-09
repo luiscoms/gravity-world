@@ -19,10 +19,12 @@ game.Arrow = me.LevelEntity.extend({
                     break;
             }
         }
+        this.levelId = me.levelDirector.getCurrentLevelId();
     },
 
     onCollision : function(res, obj) {
         if (obj.type !== 'player') return false;
+        game.reachStage(parseInt(this.levelId.replace(/.*\.(\d+)/, "$1"), 10));
         this.parent(res, obj);
     }
 });
