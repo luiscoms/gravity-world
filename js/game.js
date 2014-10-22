@@ -28,7 +28,7 @@ var game = {
     },
 
     stageLocked: function(stage, levels) {
-        if (stage <= 1) {
+        if (stage <= 1 || (levels[stage - 2] && levels[stage - 2].reached)) {
             return false;
         }
         if (levels[stage - 1] && !levels[stage - 1].reached) {
