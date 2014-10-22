@@ -101,5 +101,21 @@ game.Mage = me.ObjectContainer.extend({
         me.game.world.addChild(new Arrow(x, y), 10);
         me.game.world.addChild(new Balloon(x, y), 9);
 
+
+        // hide mage on press Enter or click/tap
+        me.input.bindKey(me.input.KEY.ENTER, 'enter', true);
+        me.input.bindPointer(me.input.mouse.LEFT, me.input.KEY.ENTER);
+        this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+            if (action === 'enter') {
+                hideMage();
+            }
+        });
+
+    },
+
+    onDestroyEvent : function () {
+        me.input.unbindKey(me.input.KEY.ENTER);
+        me.input.unbindPointer(me.input.mouse.LEFT);
+        me.event.unsubscribe(this.handler);
     }
 });
