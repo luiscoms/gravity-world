@@ -1,6 +1,6 @@
 {
   "project": {
-    "projectSettingsVersion": "1.0",
+    "projectSettingsVersion": "1.0.0",
     "creationData": {
       "type": "Blank Project",
       "src": "blankProject",
