@@ -1,4 +1,16 @@
+# workspace files are user-specific
+*.sublime-workspace
+
 Thumbs.db
 .DS_Store
 build
+
+# Dependency directory
 node_modules/
+
+#intelxdk files
+/intelxdk.config.android.xml
+/intelxdk.config.crosswalk.xml
+/intelxdk.config.ios.xml
+/intelxdk.config.windows8.xml
+/xdk
