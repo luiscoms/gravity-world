@@ -80,6 +80,7 @@
         <script type="text/javascript">
             /* Intel native bridge is available */
             document.addEventListener('intel.xdk.device.ready', function() {
+                intel.xdk.device.hideStatusBar();
                 intel.xdk.device.hideSplashScreen();
                 intel.xdk.device.setRotateOrientation("landscape");
             }, false);
