@@ -5,7 +5,7 @@
       "type": "Blank Project",
       "src": "blankProject",
       "projectGuid": "7d8418e5-8c16-4409-bfbc-205511e58d0c",
-      "lastModifiedDate": 1414034834080,
+      "lastModifiedDate": 1414085313300,
       "creationDate": 1411342656442
     },
     "sourceDirectory": "xdk",
@@ -36,7 +36,56 @@
         "appName_": "Gravity World",
         "appID_": "br.com.luiscoms.gravityworld",
         "appAccess_": "*",
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "icons/launch-icon-ldpi-36x36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "icons/launch-icon-mdpi-48x48.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "icons/launch-icon-hdpi-72x72.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "icons/launch-icon-xhdpi-96x96.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          },
+          {
+            "relPath": "assets/launch-icon-ldpi-36x36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "assets/launch-icon-mdpi-48x48.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "assets/launch-icon-hdpi-72x72.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "assets/launch-icon-xhdpi-96x96.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          }
+        ],
         "splashes_": [],
         "iosProvs_": [],
         "addlPermissions_": "",
@@ -44,7 +93,8 @@
         "cordovaCLIVersion_": "3.5",
         "appVersion_": "1.0.1",
         "appAuthor_": "LuisComS",
-        "appDescription_": ""
+        "appDescription_": "",
+        "appVersionCode_": ""
       },
       "iOS": {
         "platform_": "ios",
@@ -105,31 +155,32 @@
     "cordovaPlugins": [
       {
         "id": "intel.xdk.audio",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "intel.xdk.cache",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.contacts",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "intel.xdk.device",
-        "selectedState": "Auto",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
       {
         "id": "intel.xdk.player",
-        "selectedState": "Auto",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "org.apache.cordova.network-information",
+        "version": "0.2.8",
+        "selectedState": "Included",
         "data": {},
         "paramvals": {}
       },
@@ -148,36 +199,8 @@
         "paramvals": {}
       },
       {
-        "id": "org.apache.cordova.media",
-        "version": "0.2.8",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.dialogs",
-        "version": "0.2.5",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.vibration",
-        "version": "0.3.5",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "org.apache.cordova.splashscreen",
         "version": "0.2.5",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.network-information",
-        "version": "0.2.8",
         "selectedState": "Included",
         "data": {},
         "paramvals": {}

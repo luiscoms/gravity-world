@@ -27,11 +27,19 @@ module.exports = function(grunt) {
         }]
       },
       xdk: {
-        expand: true,
-        cwd: './build/',
-        src: '**',
-        dest: 'xdk/',
-        // filter: 'isFile',
+        files: [{
+          expand: true,
+          cwd: './build/',
+          src: ['**', '!validate/'],
+          dest: 'xdk/',
+          // filter: 'isFile',
+        },{
+          expand: true,
+          flatten: true,
+          src: ['cordova/android/**'],
+          dest: 'xdk/assets/',
+          filter: 'isFile',
+        }]
       }
     },
     processhtml: {
