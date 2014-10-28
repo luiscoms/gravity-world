@@ -40,6 +40,9 @@ var game = {
     reachStage: function(stage) {
         game.data.levels[stage - 1].reached = true;
         me.save.levels = game.data.levels;
+        if (social) {
+            social.reachStage(stage);
+        }
     },
 
     // Run on page load.

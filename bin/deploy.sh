@@ -11,18 +11,21 @@ cd $BIN_DIR/../
 grunt
 
 cd build
-
 # zip filename -r files
-zip ../gravity-world -r .
+zip ../gravity-world-dist -r .
 
 cd ..
+
+zip gravity-world-fb -r fb/
 
 ssh luiscoms@luiscoms.com.br "rm -rf "$DIRFROM"; mkdir -p "$DIRFROM
 
 # scp -r build luiscoms@luiscoms.com.br:$DIRFROM
-scp gravity-world.zip luiscoms@luiscoms.com.br:$DIRFROM
+# scp gravity-world-dist.zip luiscoms@luiscoms.com.br:$DIRFROM
+scp gravity-world-fb.zip luiscoms@luiscoms.com.br:$DIRFROM
 
-ssh luiscoms@luiscoms.com.br "unzip -o "$DIRFROM/gravity-world.zip" -d "$DIRTO
+# ssh luiscoms@luiscoms.com.br "unzip -o "$DIRFROM/gravity-world-dist.zip" -d "$DIRTO
+ssh luiscoms@luiscoms.com.br "unzip -o "$DIRFROM/gravity-world-fb.zip" -d "$DIRTO
 # ssh luiscoms@luiscoms.com.br "rsync -ruv "$DIRFROM" "$DIRTO
 
-rm gravity-world.zip
+rm gravity-world*.zip

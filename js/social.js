@@ -11,11 +11,14 @@ function statusChangeCallback(response) {
         testAPI();
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
+        console.info('Please log ' + 'into this app.');
+        // document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
+        FB.login(function(){}, {scope: 'user_games_activity,user_likes,publish_actions'});
     } else {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
+        console.info('Please log ' + 'into Facebook.');
+        // document.getElementById('status').innerHTML = 'Please log ' + 'into Facebook.';
     }
 }
 
@@ -31,9 +34,11 @@ function checkLoginState() {
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '241989366004874',
+        frictionlessRequests: true,
+        status: true,
         // cookie     : true,  // enable cookies to allow the server to access the session
         xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.0' // use version 2.0
+        version    : 'v2.1'
     });
 
     // Now that we've initialized the JavaScript SDK, we call
@@ -69,4 +74,43 @@ function testAPI() {
         console.log('Successful login for: ' + response.name);
         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
     });
-}
+};
+
+var social = {
+    reachStage: function(stage) {
+        var levelReached = {
+          'id': stage,
+          // "url": "http://samples.ogp.me/269279073275903",
+          'url': 'http://apps.facebook.com/gravity-world',
+          // 'url': 'http://labs.luiscoms.com.br/gravity-world',
+          'type': 'gravity-world:level',
+          'title': 'Stage ' + stage,
+          'scrape': true
+        };
+        var privacy = {'value': 'SELF'};
+        console.log(levelReached);
+        FB.api('me/gravity-world:reach',
+                'post',
+                {
+                    // object: {
+                    //     type: 'gravity-world:level',
+                    //     title: 'Custom Level',
+                    //     // url: 'http://labs.lusicoms.com.br/gravity-world'
+                    //     url: 'http://samples.ogp.me/269279073275903',
+                    // },
+                    level: levelReached,
+                    privacy: privacy,
+                },
+                function(response) {
+                    console.log(response);
+                    if (!response) {
+                        console.error('Error occurred.');
+                    } else if (response.error) {
+                        console.error('Error: ' + response.error.message);
+                    } else {
+                        console.log('https://www.facebook.com/me/activity/' + response.id, 'Story created.  ID is', response.id);
+                    }
+                }
+        );
+    }
+};

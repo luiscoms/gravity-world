@@ -2,20 +2,31 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
-      build: ["build"],
+      build: ['build'],
+      fb: ['fb'],
       xdk: ['xdk'],
-      dist: ["dist"],
-      doc: ["doc"],
+      dist: ['dist'],
+      doc: ['doc'],
     },
     concat: {
       dist: {
         src: ['lib/melonJS-1.0.2.js', 'lib/plugins/*.js', 'js/game.js', 'js/resources.js','js/**/*.js','!js/social.js'],
         dest: 'build/js/app.js'
+      },
+      fb: {
+        src: [
+          'lib/melonJS-1.0.2.js', 'lib/plugins/*.js',
+          'js/game.js', 'js/resources.js', 'js/**/*.js', 'js/social.js'
+        ],
+        dest: 'fb/js/app.js'
       }
     },
     copy: {
       build: {
         files: [{
+          src: 'favicon.ico',
+          dest: 'build/'
+        },{
           src: 'css/index.css',
           dest: 'build/css/index.css'
         },{
@@ -26,11 +37,19 @@ module.exports = function(grunt) {
           dest: 'build/'
         }]
       },
+      fb: {
+        files: [{
+          expand: true,
+          cwd: 'build/',
+          src: ['favicon.ico', 'index.html', 'css/**/*', 'data/**/*', 'js/**/*'],
+          dest: 'fb/'
+        }]
+      },
       xdk: {
         files: [{
           expand: true,
           cwd: './build/',
-          src: ['**', '!validate/'],
+          src: ['css/**/*', 'data/**/*', 'js/**/*'],
           dest: 'xdk/',
           // filter: 'isFile',
         },{
@@ -79,6 +98,13 @@ module.exports = function(grunt) {
             'build/js/app.js'
           ]
         }
+      },
+      fb: {
+        files: {
+          'fb/js/app.min.js': [
+            'fb/js/app.js'
+          ]
+        }
       }
     },
     watch: {
@@ -115,7 +141,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.registerTask('xdk', ['build', 'copy:xdk', 'processhtml:xdk']);
-  grunt.registerTask('build', ['clean', 'concat', 'uglify', 'copy:build', 'processhtml:build', 'notify:build']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('fb', ['copy:fb', 'concat:fb', 'uglify:fb']);
+  grunt.registerTask('xdk', ['copy:xdk', 'processhtml:xdk']);
+  grunt.registerTask('build', ['clean', 'concat:dist', 'uglify:build', 'copy:build', 'processhtml:build', 'notify:build']);
+  grunt.registerTask('default', ['build', 'xdk', 'fb']);
 }
