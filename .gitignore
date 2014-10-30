@@ -14,3 +14,6 @@ node_modules/
 /intelxdk.config.ios.xml
 /intelxdk.config.windows8.xml
 /xdk
+
+#facebook files
+fb/
