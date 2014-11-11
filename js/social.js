@@ -87,7 +87,7 @@ var social = {
           'title': 'Stage ' + stage,
           'scrape': true
         };
-        var privacy = {'value': 'SELF'};
+        var privacy = {'value': 'EVERYONE'};//EVERYONE, ALL_FRIENDS, FRIENDS_OF_FRIENDS, SELF, CUSTOM
         console.log(levelReached);
         FB.api('me/gravity-world:reach',
                 'post',
@@ -108,7 +108,7 @@ var social = {
                     } else if (response.error) {
                         console.error('Error: ' + response.error.message);
                     } else {
-                        console.log('https://www.facebook.com/me/activity/' + response.id, 'Story created.  ID is', response.id);
+                        console.log('Story created. ID is', response.id, 'Shared: '+privacy['value'], 'https://www.facebook.com/me/activity/' + response.id);
                     }
                 }
         );
