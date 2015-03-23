@@ -5,6 +5,10 @@ Thumbs.db
 .DS_Store
 build
 
+###Vagrant###
+.vagrant/
+
+###Node###
 # Dependency directory
 node_modules/
 
