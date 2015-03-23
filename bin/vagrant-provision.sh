@@ -6,7 +6,7 @@ apt-get install -y git \
                     # zip \
 
 # Install command line grunt globaly
-npm install -g grunt-cli
+npm install -g grunt-cli bower
 
 # Install sass
 # gem install sass

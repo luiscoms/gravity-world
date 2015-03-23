@@ -1,6 +1,18 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    bower: {
+      install: {
+        options: {
+          verbose: true,
+          layout: function(type, component, source) {
+            var path = require('path');
+            if (type == 'lib') return path.join();
+            return path.join(component, type); // 'byComponent'
+          }
+        }
+      }
+    },
     clean: {
       build: ['build'],
       fb: ['fb'],
@@ -133,6 +145,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
