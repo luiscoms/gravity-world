@@ -7,6 +7,7 @@ function strPad(input, length, string) {
 
 /*global me: true, game: true */
 game.StageSelectScreen = me.ScreenObject.extend({
+    init : function () {},
 
     onResetEvent: function() {
         // add SIDEMENU to the game world
@@ -66,7 +67,7 @@ game.StageSelectScreen = me.ScreenObject.extend({
                 subimage = "alock";
             }
             // 1
-            var x1 = me.video.getWidth()/2 - 42, // me.video.getWidth()/2 - 84(buttton width)/2
+            var x1 = me.video.renderer.getWidth()/2 - 42, // me.video.renderer.getWidth()/2 - 84(buttton width)/2
                 x2 = 168; // (84 + 84)
             me.game.world.addChild(
                 new game.HUD.GUI_Button({

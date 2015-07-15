@@ -7,8 +7,9 @@ game.Coin = me.CollectableEntity.extend({
         settings.spritewidth = 64;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(me.CollectableEntity, 'init', [x, y, settings]);
         this.type = 'static-collectable';
+        this.body.onCollision = this.onCollision.bind(this);
     },
 
     // this function is called by the engine, when
@@ -20,7 +21,7 @@ game.Coin = me.CollectableEntity.extend({
         game.data.score += 1;
 
         // make sure it cannot be collected "again"
-        this.collidable = false;
+        this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         // remove it
         me.game.world.removeChild(this);
     }

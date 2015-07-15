@@ -1,19 +1,21 @@
 /**
  * Pushable Entity
  */
-game.PushableEntity = me.ObjectEntity.extend({
+game.PushableEntity = me.Entity.extend({
 
     init: function(x, y, settings) {
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(me.Entity, 'init', [x, y, settings]);
 
         this.type = 'pushable';
-        this.gravity = me.sys.gravity;
-        this.setVelocity(5, 15);
+        this.body.gravity = me.sys.gravity;
+        this.body.setVelocity(5, 15);
+
+        this.body.onCollision = this.onCollision.bind(this);
     },
 
     onCollision: function(res, obj) {
-        // console.log(this.name, 'collision with', obj.name, res);
+        console.log(this.name, 'collision with', obj.name, res);
         // if we collide with the player
         if (obj.type == 'player') {
             if (res.x != 0) {
@@ -21,50 +23,53 @@ game.PushableEntity = me.ObjectEntity.extend({
             }
             if (res.y == 0) {
                 if (res.x < 0) {
-                    this.vel.x -= this.accel.x * me.timer.tick;
+                    this.body.vel.x -= this.body.accel.x * me.timer.tick;
                 } else {
-                    this.vel.x += this.accel.x * me.timer.tick;
+                    this.body.vel.x += this.body.accel.x * me.timer.tick;
                 }
             } else {
                 obj.pos.y -= res.y + (res.y > 0 ? 1 : -1);
             }
         } else if (obj.type == 'solid') {
-            this.vel.x = 0;
-            this.pos.x += res.x;
+            this.body.vel.x = 0;
+            this.body.pos.x += res.x;
         } else {
             obj.pos.x -= res.x;
             obj.pos.y -= res.y;
 
             if (res.y == 0) {
                 if (res.x < 0) {
-                    this.vel.x -= this.accel.x * me.timer.tick;
+                    this.body.vel.x -= this.body.accel.x * me.timer.tick;
                 } else {
-                    this.vel.x += this.accel.x * me.timer.tick;
+                    this.body.vel.x += this.body.accel.x * me.timer.tick;
                 }
             }
         }
     },
 
     update: function(dt) {
-        this.gravity = me.sys.gravity;
+        this.body.gravity = me.sys.gravity;
 
         // check if we fell into a hole
-        if (this.gravity > 0 && this.pos.y >= me.video.getHeight()-this.getBounds().height ||
-            this.gravity < 0 && this.pos.y <= 0) {
+        if (this.gravity > 0 && this.body.pos.y >= me.video.renderer.getHeight()-this.body.getBounds().height ||
+            this.gravity < 0 && this.body.pos.y <= 0) {
             if (this.gravity > 0) {
-                this.pos.y = me.video.getHeight()-this.getBounds().height;
+                this.body.pos.y = me.video.getHeight()-this.body.getBounds().height;
             } else {
-                this.pos.y = 0;
+                this.body.pos.y = 0;
             }
-            this.vel.y = 0;
+            this.body.vel.y = 0;
             return false;
         }
 
         // update player position
-        var res = this.updateMovement();
+        var res = this.body.update();
+
+        // check if we fell into a hole
         if (!this.inViewport ||
-                (this.gravity > 0 && this.pos.y > me.video.getHeight()) ||
-                (this.gravity < 0 && this.pos.y < -this.getBounds().height)) {
+                (this.body.gravity > 0 && this.body.pos.y > me.video.renderer.getHeight()) ||
+                (this.body.gravity < 0 && this.body.pos.y < -this.body.getBounds().height)) {
+
             // if yes reset the game
             //me.game.world.removeChild(this);
 
@@ -76,12 +81,10 @@ game.PushableEntity = me.ObjectEntity.extend({
         // if (res.xprop.type && res.xprop.type != "solid") console.log("res.xprop.type", res.xprop.type);
 
         // check for collision
-        var collision = me.game.world.collide(this);
-
-        // if (collision)
-        //     console.log("Collision with", collision.obj.name, collision.obj.type);
-        if (!collision || collision.obj.type == 'static-collectable') {
-            this.vel.x = 0;
+        // me.collision.check(this, true, this.collideHandler.bind(this), true);
+        collision = me.collision.check(this, true, this.collideHandler.bind(this), true);
+        if (!collision) { // || collision.obj.type == 'static-collectable') {
+            this.body.vel.x = 0;
         }
 
 // check for collision result with the environment
@@ -105,33 +108,41 @@ game.PushableEntity = me.ObjectEntity.extend({
 //    console.log(res.yprop.type);
 // }
 
-        if (this.vel.x !== 0 || this.vel.y !== 0) {
-            this.parent(dt);
-            // debugger;
+        if (this.body.vel.x !== 0 || this.body.vel.y !== 0) {
+            this._super(me.Entity, 'update', [dt]);
             return true;
         }
         return false;
-    }
+    },
+
+    collideHandler: function(response) {
+
+        if (response.obj.type == 'static-collectable') {
+            this.body.vel.x = 0;
+        }
+        // Update the entity bounds since we manually changed the position
+        this.updateBounds();
+    },
 });
 
 /**
  * Solid Entity
  */
-game.Solid = me.ObjectEntity.extend({
+game.Solid = me.Entity.extend({
     init: function(x, y, settings) {
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(me.Entity, 'init', [x, y, settings]);
 
-        this.collidable = true;
+        this.body.onCollision = this.onCollision.bind(this);
         this.type = 'solid';
     },
 
     onCollision: function(res, obj) {
-        obj.vel.x = 0;
-        obj.vel.y = 0;
-        obj.pos.x -= res.x;
+        obj.body.vel.x = 0;
+        obj.body.vel.y = 0;
+        obj.body.pos.x -= res.x;
         if (res.y != 0) {
-            obj.pos.y -= res.y + (res.y > 0 ? 1 : -1);
+            obj.body.pos.y -= res.y + (res.y > 0 ? 1 : -1);
         }
         // try { // if is the player
         //     obj.stop();

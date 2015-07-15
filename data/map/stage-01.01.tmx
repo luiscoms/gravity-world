@@ -32,10 +32,12 @@
   </tile>
  </tileset>
  <imagelayer name="background" width="15" height="10">
+  <!-- <image source="../img/backgrounds/background01-960x640.png"/> -->
   <image source="background01"/>
  </imagelayer>
  <imagelayer name="foreground" width="15" height="10">
   <image source="foreground01"/>
+  <!-- <image source="../img/backgrounds/foreground01-960x640.png"/> -->
  </imagelayer>
  <layer name="foreground" width="15" height="10">
   <data encoding="base64">
@@ -62,10 +64,10 @@
     <property name="visible" value="true"/>
    </properties>
   </object>
-  <object name="Mage" x="768" y="486" width="64" height="101">
+  <!-- <object name="Mage" x="768" y="486" width="64" height="101">
    <properties>
     <property name="phrase" value="It's Dangerous to go alone!{n} Take these Gravity Balls{n}to change the gravity!"/>
    </properties>
-  </object>
+  </object> -->
  </objectgroup>
 </map>

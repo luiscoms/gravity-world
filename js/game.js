@@ -5,7 +5,7 @@ var game = {
     // an object where to store game information
     data : {
         // score
-        sound : true,
+        sound : false,
         score : 0,
         keys : 0,
         levels: [
@@ -38,9 +38,11 @@ var game = {
     },
 
     reachStage: function(stage) {
-        game.data.levels[stage - 1].reached = true;
+        if (!isNaN(stage)) {
+            game.data.levels[stage - 1].reached = true;
+        }
         me.save.levels = game.data.levels;
-        if (social) {
+        if (typeof social === "object") {
             social.reachStage(stage);
         }
     },
@@ -48,7 +50,7 @@ var game = {
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
-        if (!me.video.init("screen", 960, 640, true, 'auto')) {
+        if (!me.video.init('screen', me.video.CANVAS, 960, 640, true, 'auto')) {
             window.alert("Your browser does not support HTML5 canvas.");
             return;
         }

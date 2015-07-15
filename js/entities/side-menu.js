@@ -4,12 +4,12 @@
  */
 game.SideMenu = game.SideMenu || {};
 
-game.SideMenu.Container = me.ObjectContainer.extend({
+game.SideMenu.Container = me.Container.extend({
 
     init: function(x, y, width, height) {
         var imagebg = 'menubg';
 
-        this.parent(x, y, width, height);
+        this._super(me.Container, 'init', [x, y, width, height]);
 
         // persistent across level change
         this.isPersistent = true;
@@ -22,9 +22,9 @@ game.SideMenu.Container = me.ObjectContainer.extend({
 
 
         // add a tween to change the object pos.y variable to 200 in 3 seconds
-        var sideMenu = me.ObjectContainer.extend({
+        var sideMenu = me.Container.extend({
             init: function(x, y, width, height, settings) {
-                this.parent(x, y, width, height);
+                this._super(me.Container, 'init', [x, y, width, height]);
 
                 var self = this;
                 this.initX = x;

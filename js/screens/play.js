@@ -1,6 +1,8 @@
 game.PlayScreen = me.ScreenObject.extend({
-    onLevelLoaded : function(levelName) {
+    init : function () {},
 
+    onLevelLoaded : function(levelName) {
+        // console.log('onLevelLoaded')
         game.Rock = me.game.world.getChildByName("Rock")[0];
 
         me.sys.gravity = 0.98; // default value: 0.98 (earth gravity)
@@ -59,7 +61,7 @@ game.PlayScreen = me.ScreenObject.extend({
     },
     onDestroyEvent: function() {
         // remove the HUD from the game world
-        me.game.world.removeChild(this.HUD);
+        // me.game.world.removeChild(this.HUD);
 
         // me.event.unsubscribe(this.pointerDown);
     }

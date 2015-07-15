@@ -21,11 +21,12 @@
     "tests"
   ],
   "dependencies": {
-    "melonJS": "~2.0.2"
+    "melonJS": "~1.1"
   },
   "exportsOverride": {
     "melonJS": {
-        "lib": "build/*.js"
+        "lib": "build/*.js",
+        "plugins": "plugins/debug/*.js"
     }
   }
 }

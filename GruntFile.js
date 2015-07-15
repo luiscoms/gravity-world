@@ -7,7 +7,10 @@ module.exports = function(grunt) {
           verbose: true,
           layout: function(type, component, source) {
             var path = require('path');
-            if (type == 'lib') return path.join();
+            if (component == 'melonJS') {
+              if (type == 'lib') return path.join();
+              if (type == 'plugins') return path.join('plugins');
+            }
             return path.join(component, type); // 'byComponent'
           }
         }

@@ -4,10 +4,10 @@
 game.Shell = game.PushableEntity.extend({
     init: function(x, y, settings) {
         settings.image = "shellA";
-        settings.spritewidth = settings.width = 63;
-        settings.spriteheight = settings.height = 64;
+        settings.spritewidth = 68;
+        settings.spriteheight = 72;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.PushableEntity, 'init', [x, y, settings]);
     },
 });

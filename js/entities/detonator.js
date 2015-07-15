@@ -15,11 +15,11 @@ game.Detonator = game.PushableEntity.extend({
         settings.spriteheight = settings.height = 64;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.PushableEntity, 'init', [x, y, settings]);
     },
 
     onCollision: function (res, obj) {
-        this.parent(res, obj);
+        this._super(game.PushableEntity, 'onCollision', [res, obj]);
 
         var bombs = me.game.world.getChildByName('bomb');
         if (obj.type !== 'player' || res.y <= 0) return false;

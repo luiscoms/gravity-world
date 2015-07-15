@@ -10,7 +10,7 @@ game.Lock = game.Solid.extend({
         settings.spriteheight = settings.height = 64;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.Solid, 'init', [x, y, settings]);
     },
 
     onCollision: function(res, obj) {
@@ -26,7 +26,6 @@ game.Lock = game.Solid.extend({
             return;
         }
 
-
-        this.parent(res, obj);
+        this._super(game.Solid, 'onCollision', [res, obj]);
     }
 });

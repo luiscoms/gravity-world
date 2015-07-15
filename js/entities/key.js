@@ -4,16 +4,16 @@
 game.Key = game.PushableEntity.extend({
     init: function(x, y, settings) {
         settings.image = 'key';
-        settings.spritewidth = 64;
+        settings.spritewidth = 66;
         settings.spriteheight = 48;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.PushableEntity, 'init', [x, y, settings]);
         this.type = 'pushable-collectable';
     },
 
     onCollision: function(res, obj) {
-        this.parent(res, obj);
+        this._super(game.PushableEntity, 'onCollision', [res, obj]);
 
         if (obj.type !== 'player') return false;
 

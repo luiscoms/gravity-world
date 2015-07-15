@@ -9,21 +9,20 @@ game.GravityEntity = game.PushableEntity.extend({
             break;
         }
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.PushableEntity, 'init', [x, y, settings]);
 
-        this.gravity = me.sys.gravity;
+        this.body.gravity = me.sys.gravity;
 
-        this.collidable = true;
+        this.body.onCollision = this.onCollision.bind(this);
     },
 
     // call by the engine when colliding with another object
     // obj parameter corresponds to the other object (typically the player) touching this one
     onCollision: function(res, obj) {
-        this.parent(res, obj);
-
+        this._super(game.PushableEntity, 'onCollision', [res, obj]);
         if (obj.type !== 'player') return false;
         // make sure it cannot be collected "again"
-        this.collidable = false;
+        this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         // remove it
         me.game.world.removeChild(this);
 

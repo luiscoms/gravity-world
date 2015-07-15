@@ -7,7 +7,7 @@ game.Arrow = me.LevelEntity.extend({
             settings.image = 'arrow-64x64';
         }
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
 
         if (settings.visible && 'direction' in settings) {
             switch (settings.direction) {
@@ -25,6 +25,6 @@ game.Arrow = me.LevelEntity.extend({
     onCollision : function(res, obj) {
         if (obj.type !== 'player') return false;
         game.reachStage(parseInt(this.levelId.replace(/.*\.(\d+)/, "$1"), 10));
-        this.parent(res, obj);
+        this._super(me.LevelEntity, 'onCollision', [res, obj]);
     }
 });

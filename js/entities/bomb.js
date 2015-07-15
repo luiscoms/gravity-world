@@ -14,6 +14,6 @@ game.Bomb = game.Solid.extend({
         settings.spriteheight = settings.height = 60;
 
         // call the parent constructor
-        this.parent(x, y, settings);
+        this._super(game.Solid, 'init', [x, y, settings]);
     }
 });

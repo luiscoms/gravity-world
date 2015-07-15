@@ -1,5 +1,7 @@
 /*global me: true, game: true */
 game.TitleScreen = me.ScreenObject.extend({
+    init : function () {},
+
     onResetEvent: function() {
         if (me.save.sound) {
             me.audio.stopTrack();
