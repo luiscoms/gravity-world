@@ -1,0 +1,11 @@
+version: '2'
+services:
+  gravity-world:
+    image: luiscoms/gravity-world
+    build:
+      context: .
+    command: "bash -l -c 'npm install && npm start'"
+    volumes:
+     - ./:/usr/src/app
+    ports:
+      - "7777:7777"
