@@ -8,7 +8,7 @@ DIRTO="~/www/labs/gravity-world/";
 echo $BIN_DIR
 cd $BIN_DIR/../
 #npm install
-grunt
+# grunt
 
 cd build
 # zip filename -r files
