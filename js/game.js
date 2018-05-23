@@ -1,4 +1,4 @@
-/*global me: true, game: true */
+/*global me: true, game: true, social: true */
 /** @namespace */
 var game = {
 
