@@ -21,7 +21,7 @@ To run on localhosts with node try this
 npm start
 ```
 
-Then, open your browser at [http://localhost:7777/dist](http://localhost:7777/dist)
+Then, open your browser at [http://localhost:7777/](http://localhost:7777/)
 
 
 Objects

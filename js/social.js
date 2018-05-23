@@ -76,13 +76,13 @@ var social = {
         var levelReached = {
           'id': stage,
           'url': 'http://apps.facebook.com/gravity-world',
-          'type': 'gravity-world:level',
+          // 'type': 'gravity-world:level',
           'title': 'Stage ' + stage,
           'scrape': true
         };
         var privacy = {'value': 'EVERYONE'};//EVERYONE, ALL_FRIENDS, FRIENDS_OF_FRIENDS, SELF, CUSTOM
         console.log(levelReached);
-        FB.api('me/gravity-world:reach',
+        FB.api('me/games.plays',
                 'post',
                 {
                     // object: {
@@ -91,7 +91,7 @@ var social = {
                     //     // url: 'http://labs.lusicoms.com.br/gravity-world'
                     //     url: 'http://samples.ogp.me/269279073275903',
                     // },
-                    level: levelReached,
+                    game: levelReached,
                     privacy: privacy,
                 },
                 function(response) {
